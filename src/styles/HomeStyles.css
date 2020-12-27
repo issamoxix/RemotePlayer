@@ -1,0 +1,43 @@
+.MainContainer img {
+  height: 50%;
+  margin: 0 2rem;
+}
+.BodyContainer h1 {
+  color: #fff;
+}
+.BodyContainer {
+  margin: 0 2rem;
+  height: 45%;
+}
+.BodyContainer p {
+  width: 50%;
+  color: #e08e45;
+  margin: 1rem 0;
+}
+.Wrapper {
+  background-color: #0000004f;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-radius: 7px;
+}
+.Prbtn {
+  border: none;
+  padding: 10px;
+  margin-right: 5px;
+  color: #fff;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+.Prbtn:hover {
+  transform: translateY(-3px);
+}
+.Prbtn:active {
+  transform: translateY(0px);
+}
+.Join {
+  color: #fff;
+}

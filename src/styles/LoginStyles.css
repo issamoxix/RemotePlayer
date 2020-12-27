@@ -1,0 +1,30 @@
+.LoginWrapper {
+  background-color: #0000004f;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-radius: 7px;
+  flex-direction: column;
+}
+.LoginButton {
+  border-radius: 7px;
+  background-color: transparent;
+  padding: 10px 20px;
+  width: 20vw;
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 10px;
+  color: #fff;
+  border: 2px solid #fff;
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+.Join {
+  color: #e08e45;
+}
+.LoginButton:hover {
+  background-color: #e08e45;
+  border-color: transparent;
+}

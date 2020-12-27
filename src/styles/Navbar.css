@@ -1,0 +1,32 @@
+.NavBar {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  color: #fff;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.ToggleButton {
+  background-color: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  padding: 10px;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+.ToggleButton:hover {
+  transform: translateY(-3px);
+}
+.ToggleButton:active {
+  transform: translateY(0px);
+}
+.TitleSpan {
+  transition: all 0.2s linear;
+}
+.NavItem {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}

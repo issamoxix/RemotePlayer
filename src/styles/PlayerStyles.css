@@ -1,0 +1,26 @@
+.PlayerContainer {
+  margin: auto;
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+}
+.SongBanner {
+  height: 60vh;
+  width: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 7px;
+  box-shadow: 5px 5px 5px #aaaaaa4b;
+}
+.ControlContainer {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.ControlBody {
+  margin: 2rem 0;
+  display: flex;
+  align-items: center;
+}
