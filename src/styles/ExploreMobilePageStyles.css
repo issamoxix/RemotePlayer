@@ -36,6 +36,7 @@
   height: 90vh;
 }
 .TogglePlayMobile {
-  background: red;
-  border-radius: 30%;
+  height: 45px;
+  cursor: pointer;
+  transition: all 0.2s linear;
 }
