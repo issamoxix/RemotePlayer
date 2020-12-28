@@ -51,7 +51,7 @@
 .CardImage {
   height: 70%;
 
-  background: url("http://localhost:3000/images/banner.jpg");
+  background: url("http://192.168.1.129:3000/images/banner.jpg");
   background-size: cover;
   background-position: center;
   border-radius: 7px;
@@ -90,4 +90,15 @@
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+@media (max-width: 600px) {
+  .searchResult {
+    /* switch with none */
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .CardImage {
+    border-radius: 0;
+  }
 }

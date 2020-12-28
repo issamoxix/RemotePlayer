@@ -1,0 +1,41 @@
+.MobileExploreContainer {
+  background: #000;
+  height: 100vh;
+  width: 100vw;
+}
+.Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  height: 10vh;
+}
+.Header h2 {
+  color: #fff;
+}
+.SearchForm {
+  flex: 0.8;
+  border-bottom: 2px solid gray;
+}
+.SearchInput {
+  width: 90%;
+  border: none;
+  padding: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #fff;
+  margin-left: 1rem;
+  background-color: transparent;
+}
+.SearchForm {
+  position: relative;
+}
+.SearchResult {
+  display: grid;
+  overflow-y: auto;
+  height: 90vh;
+}
+.TogglePlayMobile {
+  background: red;
+  border-radius: 30%;
+}

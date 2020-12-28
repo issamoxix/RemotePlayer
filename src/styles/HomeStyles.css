@@ -41,3 +41,27 @@
 .Join {
   color: #fff;
 }
+@media (max-width: 600px) {
+  .MainContainer img {
+    display: none;
+  }
+  .Wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .BodyContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .buttonContainer {
+    display: flex;
+    flex-direction: row;
+  }
+  .BodyContainer p {
+    width: 100%;
+    text-align: center;
+  }
+}

@@ -18,36 +18,38 @@ const HomePage = () => {
               amet est deserunt eiusmod laboris excepteur nulla incididunt
               excepteur. Sint irure aliqua aute culpa enim ex esse labore.
             </p>
-            <Link to="/login">
-              <button
-                className="Prbtn"
-                onClick={() =>
-                  dispatch(
-                    setPlat({
-                      plat: "ytb",
-                    })
-                  )
-                }
-                style={{ background: "#93032E" }}
-              >
-                Youtube
-              </button>
-            </Link>
-            <Link to="/login">
-              <button
-                className="Prbtn"
-                onClick={() =>
-                  dispatch(
-                    setPlat({
-                      plat: "sdc",
-                    })
-                  )
-                }
-                style={{ background: "#E08E45" }}
-              >
-                SoundCloud
-              </button>
-            </Link>
+            <div className="buttonContainer">
+              <Link to="/login">
+                <button
+                  className="Prbtn"
+                  onClick={() =>
+                    dispatch(
+                      setPlat({
+                        plat: "ytb",
+                      })
+                    )
+                  }
+                  style={{ background: "#93032E" }}
+                >
+                  Youtube
+                </button>
+              </Link>
+              <Link to="/login">
+                <button
+                  className="Prbtn"
+                  onClick={() =>
+                    dispatch(
+                      setPlat({
+                        plat: "sdc",
+                      })
+                    )
+                  }
+                  style={{ background: "#E08E45" }}
+                >
+                  SoundCloud
+                </button>
+              </Link>
+            </div>
           </div>
           <img src={Mkd} alt="Music" />
         </div>

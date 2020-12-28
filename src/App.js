@@ -15,7 +15,7 @@ function App() {
         {!user ? (
           <>
             <Route path="/login" exact component={LoginPage} />
-            <Route path="/" component={HomePage} />
+            <Route path="/" exact component={HomePage} />
           </>
         ) : (
           <>

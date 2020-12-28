@@ -28,3 +28,11 @@
   background-color: #e08e45;
   border-color: transparent;
 }
+@media (max-width: 600px) {
+  .LoginButton {
+    width: 40vw;
+  }
+  .Join {
+    font-size: 7vw;
+  }
+}

@@ -2,6 +2,7 @@ import React from "react";
 import SettingsRemoteIcon from "@material-ui/icons/SettingsRemote";
 import VideoLabelRoundedIcon from "@material-ui/icons/VideoLabelRounded";
 import { Link } from "react-router-dom";
+import "../styles/ChossingStyles.css";
 const ChoPage = () => {
   return (
     <div className="HeroContainer" style={{ background: "#E54F6D" }}>
@@ -27,18 +28,7 @@ const ChoPage = () => {
             style={{ position: "relative", borderRadius: "7px" }}
           >
             <Link to="/remote">
-              <button
-                style={{
-                  padding: "12px",
-                  background: "black",
-                  border: "none",
-                  color: "#fff",
-                  borderRadius: "7px",
-                  marginRight: "7px",
-                  cursor: "pointer",
-                  width: "10vw",
-                }}
-              >
+              <button className="Chbutton" style={{}}>
                 Remote
               </button>
             </Link>
@@ -54,20 +44,7 @@ const ChoPage = () => {
           </form>
           <form style={{ position: "relative", borderRadius: "7px" }}>
             <Link to="/display">
-              <button
-                style={{
-                  padding: "12px",
-                  background: "black",
-                  border: "none",
-                  color: "#fff",
-                  borderRadius: "7px",
-                  marginRight: "7px",
-                  cursor: "pointer",
-                  width: "10vw",
-                }}
-              >
-                Display
-              </button>
+              <button className="Chbutton">Display</button>
             </Link>
             <VideoLabelRoundedIcon
               style={{

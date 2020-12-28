@@ -3,9 +3,12 @@ import NavBar from "../components/NavBar";
 import "../styles/ExploreStyles.css";
 import SearchRoundedIcon from "@material-ui/icons/SearchRounded";
 import SearchCard from "../components/SearchCard";
+import ExploreMobilePage from "./ExploreMobilePage";
 const ExplorePage = () => {
   const [input, setInupt] = useState();
   const [cName, setcName] = useState("title");
+
+  if (window.innerWidth <= 600) return <ExploreMobilePage />;
   return (
     <div className="HeroContainer" style={{ background: "lightgray" }}>
       <div

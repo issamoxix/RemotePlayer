@@ -1,0 +1,15 @@
+.Chbutton {
+  padding: 12px;
+  background: black;
+  border: none;
+  color: #fff;
+  border-radius: 7px;
+  margin-right: 7px;
+  cursor: pointer;
+  width: 10vw;
+}
+@media (max-width: 600px) {
+  .Chbutton {
+    width: 30vw;
+  }
+}
