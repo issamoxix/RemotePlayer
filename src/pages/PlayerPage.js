@@ -18,7 +18,7 @@ const PlayerPage = () => {
           position: "relative",
         }}
       >
-        <NavBar />
+        <NavBar style={{ position: "absolute", background: "transparent" }} />
         <div className="PlayerContainer">
           <Banner />
           <Controlle />

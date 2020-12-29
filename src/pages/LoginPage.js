@@ -1,12 +1,15 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { addUser, selectPlat } from "../features/app/appSlice";
+import { auth, provider } from "../db/firebase";
+import { selectPlat } from "../features/app/appSlice";
 import "../styles/HomeStyles.css";
 import "../styles/LoginStyles.css";
 const LoginPage = () => {
   const Plat = useSelector(selectPlat);
-  const dispatch = useDispatch();
+  const signIn = () => {
+    auth.signInWithPopup(provider).catch((error) => alert(error.message));
+  };
   let history = useHistory();
   useEffect(() => {
     if (!Plat) {
@@ -22,10 +25,7 @@ const LoginPage = () => {
         <div className="LoginWrapper">
           <h1 className="Join">Start with Loging in ...</h1>
 
-          <button
-            className="LoginButton"
-            onClick={() => dispatch(addUser({ user: "issam" }))}
-          >
+          <button className="LoginButton" onClick={() => signIn()}>
             Log in
           </button>
         </div>

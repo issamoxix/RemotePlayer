@@ -1,11 +1,12 @@
 .NavBar {
-  position: absolute;
   top: 0;
   width: 100%;
   color: #fff;
   padding: 15px;
   display: flex;
   justify-content: space-between;
+  background-color: #000;
+  border-radius: 7px 7px 0 0;
 }
 .ToggleButton {
   background-color: transparent;
@@ -33,4 +34,36 @@
 .Nav {
   display: flex;
   align-items: center;
+}
+.LogoTitle {
+  cursor: pointer;
+}
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.title {
+  color: #fff;
+  display: flex;
+  transform: all 0.2s linear;
+}
+.searchInput {
+  background-color: transparent;
+  border: none;
+  margin: 0 1rem;
+  padding: 10px;
+  font-size: 15px;
+  color: #fff;
+}
+.searchForm {
+  position: relative;
+  margin: 0 1rem;
+  border-bottom: 2px solid gray;
+  transition: all 0.5s linear;
+  color: gray;
+}
+.searchForm:focus-within {
+  border-color: #fff;
+  color: #fff;
 }

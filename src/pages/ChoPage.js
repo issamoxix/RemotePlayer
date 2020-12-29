@@ -3,6 +3,7 @@ import SettingsRemoteIcon from "@material-ui/icons/SettingsRemote";
 import VideoLabelRoundedIcon from "@material-ui/icons/VideoLabelRounded";
 import { Link } from "react-router-dom";
 import "../styles/ChossingStyles.css";
+
 const ChoPage = () => {
   return (
     <div className="HeroContainer" style={{ background: "#E54F6D" }}>
