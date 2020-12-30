@@ -7,9 +7,14 @@ import VolumeDownIcon from "@material-ui/icons/VolumeDown";
 
 const Controlle = () => {
   const plat = useSelector(selectPlat);
-  const src = `https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${314321552}&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`;
-  let SC;
+  const src = `https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/314321552&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`;
+  const Go = () => {
+    var iframeElement = document.querySelector("iframe");
 
+    var widget1 = window.SC.Widget(iframeElement);
+
+    return widget1;
+  };
   return (
     <div className="ControlContainer">
       <div className="SongTitle">
@@ -18,16 +23,19 @@ const Controlle = () => {
           {plat === "ytb" ? "Youtube" : "Soundcloud"}{" "}
         </p>
       </div>
-      <iframe
-        id="myFrame"
-        title="player"
-        width="100%"
-        height="366"
-        scrolling="no"
-        allow="autoplay"
-        className="IframePlayer"
-        src={src}
-      ></iframe>
+      <div>
+        <iframe
+          id="myFrame"
+          title="player"
+          width="100%"
+          height="366"
+          scrolling="no"
+          frameborder="no"
+          allow="autoplay"
+          className="IframePlayer"
+          src={src}
+        ></iframe>
+      </div>
       <div className="ControlBody">
         <VolumeDownIcon style={{ fontSize: 30, cursor: "pointer" }} />
         <PauseIcon
@@ -39,6 +47,12 @@ const Controlle = () => {
             cursor: "pointer",
             transition: "all 0.2s linear",
             margin: "0 1rem",
+          }}
+          onClick={() => {
+            var p = Go();
+            p.toggle();
+            p.setVolume(20);
+            p.bind("playProgress", () => p.getPosition((x) => console.log(x)));
           }}
         />
         <VolumeUpIcon style={{ fontSize: 30, cursor: "pointer" }} />

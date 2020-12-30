@@ -1,11 +1,9 @@
-import { SC } from "./Wsc";
-
-const Go = () => {
+const Go = (SC) => {
   var iframeElement = document.querySelector("iframe");
 
   var widget1 = SC.Widget(iframeElement);
 
-  return widget1;
+  return console.log(widget1);
 };
 
 export default Go;

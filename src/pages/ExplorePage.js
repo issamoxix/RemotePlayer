@@ -9,6 +9,7 @@ import { selectPlat, selectSearch } from "../features/app/appSlice";
 const ExplorePage = () => {
   const plat = useSelector(selectPlat);
   const SearchResult = useSelector(selectSearch);
+
   if (window.innerWidth <= 600) return <ExploreMobilePage />;
   return (
     <div className="HeroContainer" style={{ background: "lightgray" }}>
