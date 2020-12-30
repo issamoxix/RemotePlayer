@@ -4,7 +4,11 @@ import "../styles/ExploreStyles.css";
 import SearchCard from "../components/SearchCard";
 import ExploreMobilePage from "./ExploreMobilePage";
 import MusicController from "../components/MusicController";
+import { useSelector } from "react-redux";
+import { selectPlat, selectSearch } from "../features/app/appSlice";
 const ExplorePage = () => {
+  const plat = useSelector(selectPlat);
+  const SearchResult = useSelector(selectSearch);
   if (window.innerWidth <= 600) return <ExploreMobilePage />;
   return (
     <div className="HeroContainer" style={{ background: "lightgray" }}>
@@ -20,11 +24,11 @@ const ExplorePage = () => {
         <div className="container">
           <NavBar />
           <div className="searchResult">
-            <SearchCard />
-            <SearchCard />
-            <SearchCard />
-            <SearchCard />
-            <SearchCard />
+            {plat === "sdc" &&
+              SearchResult &&
+              SearchResult.map((res, ket) => (
+                <SearchCard key={ket} img={res.artwork_url} title={res.title} />
+              ))}
           </div>
           <MusicController />
         </div>

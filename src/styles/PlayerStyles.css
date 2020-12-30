@@ -24,6 +24,9 @@
   display: flex;
   align-items: center;
 }
+.IframePlayer {
+  /* display: none; */
+}
 @media (max-width: 600px) {
   .PlayerContainer {
     flex-direction: column;

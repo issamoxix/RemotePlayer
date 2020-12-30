@@ -67,3 +67,15 @@ a {
   border-color: #fff;
   color: #fff;
 }
+.TogglePlayMobileNavBar {
+  cursor: pointer;
+  transition: all 0.2s linear;
+  height: 32px;
+}
+.UserTab {
+  display: flex;
+  align-items: center;
+}
+.AvatarIcon {
+  margin: 0 1rem;
+}

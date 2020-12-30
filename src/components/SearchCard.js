@@ -2,13 +2,20 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { selectPlat } from "../features/app/appSlice";
 
-const SearchCard = () => {
+const SearchCard = ({ img, title }) => {
   const plat = useSelector(selectPlat);
   return (
     <div className="Card">
-      <div className="CardImage"></div>
+      <div
+        className="CardImage"
+        style={{
+          backgroundImage: `URL('${
+            img && img.split("-large.jpg")[0]
+          }-t500x500.jpg')`,
+        }}
+      ></div>
       <div className="CardBody">
-        <h3>Tired Su lee</h3>
+        <h4>{title.substring(0, 17)} </h4>
         <p
           style={{ color: "#035F87", fontWeight: "bold", marginBottom: "1rem" }}
         >

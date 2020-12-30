@@ -26,8 +26,7 @@
 }
 .CardImage {
   height: 70%;
-
-  background: url("http://192.168.1.129:3000/images/banner.jpg");
+  /* background: url("http://192.168.1.129:3000/images/banner.jpg"); */
   background-size: contain;
   background-position: center;
   border-radius: 7px;

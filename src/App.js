@@ -1,6 +1,11 @@
 import React, { useEffect } from "react";
 import HomePage from "./pages/HomePage";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import { useDispatch, useSelector } from "react-redux";
 import PlayerPage from "./pages/PlayerPage";
@@ -9,6 +14,9 @@ import ExplorePage from "./pages/ExplorePage";
 import { selectUser, setUser } from "./features/user/userSlice";
 import db, { auth } from "./db/firebase";
 import { selectPlat } from "./features/app/appSlice";
+function npage() {
+  return <div>404</div>;
+}
 function App() {
   const user = useSelector(selectUser);
   const plat = useSelector(selectPlat);
@@ -49,8 +57,8 @@ function App() {
       <Switch>
         {!user ? (
           <>
-            <Route path="/login" exact component={LoginPage} />
-            <Route path="/" exact component={HomePage} />
+            <Route exact path="/" component={HomePage} />
+            <Route exact path="/login" component={LoginPage} />
           </>
         ) : (
           <>

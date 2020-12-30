@@ -4,8 +4,12 @@ import { selectPlat } from "../features/app/appSlice";
 import PauseIcon from "@material-ui/icons/Pause";
 import VolumeUpIcon from "@material-ui/icons/VolumeUp";
 import VolumeDownIcon from "@material-ui/icons/VolumeDown";
+
 const Controlle = () => {
   const plat = useSelector(selectPlat);
+  const src = `https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${314321552}&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`;
+  let SC;
+
   return (
     <div className="ControlContainer">
       <div className="SongTitle">
@@ -14,6 +18,16 @@ const Controlle = () => {
           {plat === "ytb" ? "Youtube" : "Soundcloud"}{" "}
         </p>
       </div>
+      <iframe
+        id="myFrame"
+        title="player"
+        width="100%"
+        height="366"
+        scrolling="no"
+        allow="autoplay"
+        className="IframePlayer"
+        src={src}
+      ></iframe>
       <div className="ControlBody">
         <VolumeDownIcon style={{ fontSize: 30, cursor: "pointer" }} />
         <PauseIcon
