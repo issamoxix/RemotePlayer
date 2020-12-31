@@ -41,7 +41,7 @@ const Controlle = () => {
   return (
     <div className="ControlContainer">
       <div className="SongTitle">
-        <h2>{SongName} </h2>
+        <h2>{SongName.substring(0, 20)} </h2>
         <p style={{ color: "#035F87", fontWeight: "bold" }}>
           {plat === "ytb" ? "Youtube" : "Soundcloud"}{" "}
         </p>

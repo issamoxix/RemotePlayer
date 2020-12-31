@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/ExploreMobilePageStyles.css";
 import SearchRoundedIcon from "@material-ui/icons/SearchRounded";
 import SearchCard from "../components/SearchCard";
@@ -9,16 +9,27 @@ import {
   selectSearch,
   setPlat,
   setSearch,
+  selectQuery,
+  setQuery,
 } from "../features/app/appSlice";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import MusicController from "../components/MusicController";
+
 const ExploreMobilePage = () => {
   const [input, setInupt] = useState();
+  const [Qw, setQ] = useState();
   const plat = useSelector(selectPlat);
+  const Query = useSelector(selectQuery);
   const dispatch = useDispatch();
   const SearchResult = useSelector(selectSearch);
   const Search = (query, plat) => {
+    dispatch(
+      setQuery({
+        query: query,
+      })
+    );
     if (plat === "sdc") {
       axios
         .get(
@@ -30,9 +41,19 @@ const ExploreMobilePage = () => {
               Search: doc.data.collection,
             })
           );
+          dispatch(
+            setQuery({
+              query: null,
+            })
+          );
         });
     }
   };
+  useEffect(() => {
+    if (Query) {
+      setQ(Query);
+    }
+  }, [Query]);
   return (
     <div className="MobileExploreContainer">
       <div className="Header">
@@ -41,7 +62,7 @@ const ExploreMobilePage = () => {
         </Link>
         <img
           className="TogglePlayMobile"
-          src={plat === "sdc" ? sdc : ytb}
+          src={plat !== "sdc" ? sdc : ytb}
           alt="plat"
           onClick={() =>
             dispatch(setPlat({ plat: plat === "sdc" ? "ytb" : "sdc" }))
@@ -73,12 +94,27 @@ const ExploreMobilePage = () => {
         </form>
       </div>
       <div className="SearchResult">
-        {plat === "sdc" &&
-          SearchResult &&
+        {plat === "sdc" && SearchResult ? (
           SearchResult.map((res, ket) => (
-            <SearchCard key={ket} img={res.artwork_url} title={res.title} />
-          ))}
+            <SearchCard
+              key={ket}
+              img={res.artwork_url}
+              title={res.title}
+              Sid={res.id}
+            />
+          ))
+        ) : Qw ? (
+          <p className="SearchingProgress">
+            Searching for{" "}
+            <span style={{ color: plat === "sdc" ? "#E08E45" : "#93032E" }}>
+              {Query} ...{" "}
+            </span>{" "}
+          </p>
+        ) : (
+          <p className="SearchingProgress">Search for something .</p>
+        )}
       </div>
+      <MusicController mobile={true} />
     </div>
   );
 };

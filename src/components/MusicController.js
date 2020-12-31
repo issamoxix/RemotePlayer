@@ -11,8 +11,8 @@ import {
 } from "../features/player/playerSlice";
 import db from "../db/firebase";
 import { selectUser } from "../features/user/userSlice";
-import ProgressBar from "./ProgressBar";
-const MusicController = () => {
+
+const MusicController = ({ mobile }) => {
   const plat = useSelector(selectPlat);
   const playing = useSelector(selectSongPlay);
   const user = useSelector(selectUser);
@@ -25,12 +25,30 @@ const MusicController = () => {
     });
   };
   return (
-    <div className="MusicControllerContainer">
+    <div
+      className="MusicControllerContainer"
+      style={{
+        position: mobile && "fixed",
+        bottom: 0,
+        background: mobile && "#000",
+      }}
+    >
       <div
         className="SongArtPic"
-        style={{ backgroundImage: `url('${ArtW}')` }}
+        style={{
+          backgroundImage: `url('${ArtW}')`,
+          display: mobile && "none",
+        }}
       ></div>
-      <div className="SongTitle" style={{ height: "100%" }}>
+      <div
+        className="SongTitle"
+        style={{
+          height: "100%",
+          display: mobile && "flex",
+          flexDirection: mobile && "column",
+          justifyContent: mobile && "center",
+        }}
+      >
         <h3 style={{ marginBottom: "-7px" }}> {SongName} </h3>
         <p style={{ color: "#035F87", fontWeight: "bold" }}>
           {plat === "ytb" ? "Youtube" : "Soundcloud"}

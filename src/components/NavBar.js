@@ -81,7 +81,7 @@ const NavBar = ({ style }) => {
         <img
           style={{ height: "32px" }}
           className="TogglePlayMobileNavBar"
-          src={Plat === "sdc" ? sdc : ytb}
+          src={Plat !== "sdc" ? sdc : ytb}
           alt="plat"
           onClick={() =>
             dispatch(setPlat({ plat: Plat === "sdc" ? "ytb" : "sdc" }))
