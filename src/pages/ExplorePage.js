@@ -28,7 +28,12 @@ const ExplorePage = () => {
             {plat === "sdc" &&
               SearchResult &&
               SearchResult.map((res, ket) => (
-                <SearchCard key={ket} img={res.artwork_url} title={res.title} />
+                <SearchCard
+                  key={ket}
+                  img={res.artwork_url}
+                  title={res.title}
+                  Sid={res.id}
+                />
               ))}
           </div>
           <MusicController />

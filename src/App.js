@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import HomePage from "./pages/HomePage";
 import {
   BrowserRouter as Router,
@@ -14,14 +14,32 @@ import ExplorePage from "./pages/ExplorePage";
 import { selectUser, setUser } from "./features/user/userSlice";
 import db, { auth } from "./db/firebase";
 import { selectPlat } from "./features/app/appSlice";
+import { addSong } from "./features/player/playerSlice";
 function npage() {
   return <div>404</div>;
 }
 function App() {
+  const [check, setCheck] = useState(false);
   const user = useSelector(selectUser);
   const plat = useSelector(selectPlat);
   const dispatch = useDispatch();
   useEffect(() => {
+    if (check) {
+      db.collection("users")
+        .doc(user.email)
+        .onSnapshot((snapshot) => {
+          let data = snapshot.data();
+          dispatch(
+            addSong({
+              songId: data.id,
+              songName: data.name,
+              playing: data.playing,
+              artW: data.artW,
+              vol: data.vol,
+            })
+          );
+        });
+    }
     auth.onAuthStateChanged((authUser) => {
       if (authUser) {
         //if the user loged in
@@ -34,6 +52,7 @@ function App() {
             plat: plat,
           })
         );
+
         db.collection("users")
           .doc(authUser.email)
           .get("user")
@@ -45,13 +64,16 @@ function App() {
                 name: null,
                 type: null,
                 id: null,
-                vol: 50,
+                vol: 100,
+                artW: null,
               });
+            } else {
+              setCheck(true);
             }
           });
       }
     });
-  }, [dispatch, plat]);
+  }, [dispatch, plat, check]);
   return (
     <Router>
       <Switch>

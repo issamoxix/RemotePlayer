@@ -1,13 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { selectPlat } from "../features/app/appSlice";
 import PauseIcon from "@material-ui/icons/Pause";
 import VolumeUpIcon from "@material-ui/icons/VolumeUp";
 import VolumeDownIcon from "@material-ui/icons/VolumeDown";
-
+import PlayArrowRoundedIcon from "@material-ui/icons/PlayArrowRounded";
+import {
+  selectSongId,
+  selectSongPlay,
+  selectVol,
+  selectSongName,
+} from "../features/player/playerSlice";
+import db from "../db/firebase";
+import { selectUser } from "../features/user/userSlice";
 const Controlle = () => {
   const plat = useSelector(selectPlat);
-  const src = `https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/314321552&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`;
+  const Vol = useSelector(selectVol);
+  const user = useSelector(selectUser);
+  const playing = useSelector(selectSongPlay);
+  const SongName = useSelector(selectSongName);
+  const SongId = useSelector(selectSongId);
+  const src = `https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${SongId}&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`;
   const Go = () => {
     var iframeElement = document.querySelector("iframe");
 
@@ -15,10 +28,20 @@ const Controlle = () => {
 
     return widget1;
   };
+  useEffect(() => {
+    if (playing) {
+      var r = Go();
+      r.play();
+      r.setVolume(Vol);
+    } else {
+      var r = Go();
+      r.pause();
+    }
+  }, [playing, Vol]);
   return (
     <div className="ControlContainer">
       <div className="SongTitle">
-        <h2>Tired By Su lee</h2>
+        <h2>{SongName} </h2>
         <p style={{ color: "#035F87", fontWeight: "bold" }}>
           {plat === "ytb" ? "Youtube" : "Soundcloud"}{" "}
         </p>
@@ -38,25 +61,64 @@ const Controlle = () => {
       </div>
       <div className="ControlBody">
         <VolumeDownIcon style={{ fontSize: 30, cursor: "pointer" }} />
-        <PauseIcon
-          style={{
-            background: plat === "sdc" ? "#E08E45" : "#93032E",
-            borderRadius: 50,
-            padding: "5px",
-            fontSize: 50,
-            cursor: "pointer",
-            transition: "all 0.2s linear",
-            margin: "0 1rem",
-          }}
-          onClick={() => {
-            var p = Go();
-            p.toggle();
-            p.setVolume(20);
-            p.bind("playProgress", () => p.getPosition((x) => console.log(x)));
-          }}
-        />
+        {playing ? (
+          <PauseIcon
+            style={{
+              background: plat === "sdc" ? "#E08E45" : "#93032E",
+              borderRadius: 50,
+              padding: "5px",
+              fontSize: 50,
+              cursor: "pointer",
+              transition: "all 0.2s linear",
+              margin: "0 1rem",
+            }}
+            onClick={() => {
+              var p = Go();
+              p.toggle();
+
+              // p.bind("playProgress", () =>
+              //   p.getPosition((x) => console.log(x))
+              // );
+              db.collection("users").doc(user.email).update({
+                playing: false,
+              });
+            }}
+          />
+        ) : (
+          <PlayArrowRoundedIcon
+            style={{
+              background: plat === "sdc" ? "#E08E45" : "#93032E",
+              borderRadius: 50,
+              padding: "5px",
+              fontSize: 50,
+              cursor: "pointer",
+              transition: "all 0.2s linear",
+              margin: "0 1rem",
+            }}
+            onClick={() => {
+              var p = Go();
+              p.toggle();
+              db.collection("users").doc(user.email).update({
+                playing: true,
+              });
+            }}
+          />
+        )}
         <VolumeUpIcon style={{ fontSize: 30, cursor: "pointer" }} />
       </div>
+      <input
+        onChange={(e) => {
+          db.collection("users").doc(user.email).update({
+            vol: e.target.value,
+          });
+          var g = Go();
+          g.setVolume(e.target.value);
+        }}
+        type="range"
+        min="0"
+        max="100"
+        value={Vol}
+      />
     </div>
   );
 };

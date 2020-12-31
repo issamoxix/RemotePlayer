@@ -1,9 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import db from "../db/firebase";
 import { selectPlat } from "../features/app/appSlice";
+import { selectUser } from "../features/user/userSlice";
 
-const SearchCard = ({ img, title }) => {
+const SearchCard = ({ img, title, Sid }) => {
   const plat = useSelector(selectPlat);
+  const user = useSelector(selectUser);
   return (
     <div className="Card">
       <div
@@ -25,6 +28,16 @@ const SearchCard = ({ img, title }) => {
           className="PlayButton"
           style={{
             background: plat === "sdc" ? "#E08E45" : "#93032E",
+          }}
+          onClick={() => {
+            db.collection("users").doc(user.email).update({
+              playing: true,
+              name: title,
+              type: plat,
+              id: Sid,
+              vol: 50,
+              artW: img,
+            });
           }}
         >
           Play

@@ -12,6 +12,7 @@ import {
 } from "../features/app/appSlice";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import { Link } from "react-router-dom";
 const ExploreMobilePage = () => {
   const [input, setInupt] = useState();
   const plat = useSelector(selectPlat);
@@ -35,7 +36,9 @@ const ExploreMobilePage = () => {
   return (
     <div className="MobileExploreContainer">
       <div className="Header">
-        <h2>RemotePlayer</h2>
+        <Link to="/">
+          <h2>RemotePlayer</h2>
+        </Link>
         <img
           className="TogglePlayMobile"
           src={plat === "sdc" ? sdc : ytb}

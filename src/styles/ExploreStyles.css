@@ -70,19 +70,35 @@
 /* Music Controll bottom bar */
 .MusicControllerContainer {
   width: 100%;
-
   border-radius: 0 0 7px;
-  height: 15%;
+  height: 19%;
+  padding: 10px;
   display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  flex-direction: column;
+}
+.SongArtPic {
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 11%;
+  height: 100%;
 }
 .SongController {
-  flex: 1;
 }
 .SongTitle {
   color: #fff;
+}
+.ProgressBar {
+  width: 74vw;
+  background-color: #fff;
+  height: 8px;
+  margin: 0 1rem;
+  flex: 1;
+  position: relative;
+}
+.Bar {
+  background: red;
+  height: 100%;
 }
 @media (max-width: 600px) {
   .searchResult {
