@@ -12,9 +12,10 @@ const SearchCard = ({ img, title, Sid }) => {
       <div
         className="CardImage"
         style={{
-          backgroundImage: `URL('${
-            img && img.split("-large.jpg")[0]
-          }-t500x500.jpg')`,
+          backgroundImage:
+            plat === "sdc"
+              ? `URL('${img && img.split("-large.jpg")[0]}-t500x500.jpg')`
+              : `URL('${img && img}')`,
         }}
       ></div>
       <div className="CardBody">

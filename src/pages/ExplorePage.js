@@ -25,8 +25,7 @@ const ExplorePage = () => {
         <div className="container">
           <NavBar />
           <div className="searchResult">
-            {plat === "sdc" &&
-              SearchResult &&
+            {SearchResult &&
               SearchResult.map((res, ket) => (
                 <SearchCard
                   key={ket}

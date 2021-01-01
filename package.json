@@ -1,6 +1,6 @@
 {
   "name": "remote-player",
-  "proxy": "https://api-v2.soundcloud.com/",
+  "proxy": "http://192.168.1.129:5000/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
