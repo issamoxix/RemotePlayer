@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
 import HomePage from "./pages/HomePage";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import { useDispatch, useSelector } from "react-redux";
 import PlayerPage from "./pages/PlayerPage";
@@ -13,8 +8,8 @@ import ChoPage from "./pages/ChoPage";
 import ExplorePage from "./pages/ExplorePage";
 import { selectUser, setUser } from "./features/user/userSlice";
 import db, { auth } from "./db/firebase";
-import { selectPlat } from "./features/app/appSlice";
-import { addSong } from "./features/player/playerSlice";
+
+import { addSong, selectPlat } from "./features/player/playerSlice";
 function npage() {
   return <div>404</div>;
 }
@@ -36,6 +31,7 @@ function App() {
               playing: data.playing,
               artW: data.artW,
               vol: data.vol,
+              plat: data.type,
             })
           );
         });
@@ -79,8 +75,8 @@ function App() {
       <Switch>
         {!user ? (
           <>
-            <Route exact path="/" component={HomePage} />
-            <Route exact path="/login" component={LoginPage} />
+            <Route path="/" exact component={HomePage} />
+            <Route path="/login" component={LoginPage} />
           </>
         ) : (
           <>

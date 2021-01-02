@@ -8,6 +8,15 @@
   cursor: pointer;
   width: 10vw;
 }
+.choForm {
+  transition: all 0.2s linear;
+}
+.choForm:hover {
+  transform: translateY(-3px);
+}
+.choForm:active {
+  transform: translateY(0px);
+}
 @media (max-width: 600px) {
   .Chbutton {
     width: 30vw;

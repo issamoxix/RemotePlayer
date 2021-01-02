@@ -1,7 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import db from "../db/firebase";
-import { selectPlat } from "../features/app/appSlice";
+import { selectPlat } from "../features/player/playerSlice";
+
 import { selectUser } from "../features/user/userSlice";
 
 const SearchCard = ({ img, title, Sid }) => {

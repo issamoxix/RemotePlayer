@@ -1,10 +1,11 @@
 import React from "react";
 import PauseIcon from "@material-ui/icons/Pause";
 import { useSelector } from "react-redux";
-import { selectPlat } from "../features/app/appSlice";
+
 import PlayArrowRoundedIcon from "@material-ui/icons/PlayArrowRounded";
 import {
   selectArt,
+  selectPlat,
   selectSongName,
   selectSongPlay,
   selectVol,

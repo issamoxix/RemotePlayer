@@ -5,9 +5,7 @@ import SearchCard from "../components/SearchCard";
 import ytb from "../assets/youtube.png";
 import sdc from "../assets/soundcloud.png";
 import {
-  selectPlat,
   selectSearch,
-  setPlat,
   setSearch,
   selectQuery,
   setQuery,
@@ -16,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import MusicController from "../components/MusicController";
+import { selectPlat, setPlat } from "../features/player/playerSlice";
 
 const ExploreMobilePage = () => {
   const [input, setInupt] = useState();

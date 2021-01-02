@@ -5,7 +5,8 @@ import SearchCard from "../components/SearchCard";
 import ExploreMobilePage from "./ExploreMobilePage";
 import MusicController from "../components/MusicController";
 import { useSelector } from "react-redux";
-import { selectPlat, selectSearch } from "../features/app/appSlice";
+import { selectSearch } from "../features/app/appSlice";
+import { selectPlat } from "../features/player/playerSlice";
 const ExplorePage = () => {
   const plat = useSelector(selectPlat);
   const SearchResult = useSelector(selectSearch);

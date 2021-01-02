@@ -8,25 +8,39 @@
   border-radius: 7px;
   flex-direction: column;
 }
-.LoginButton {
+.LoginForm {
+  background-color: #f44336;
   border-radius: 7px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.LoginButton {
+  border: none;
   background-color: transparent;
-  padding: 10px 20px;
-  width: 20vw;
+  height: 100%;
   font-weight: bold;
-  font-size: 20px;
-  margin-top: 10px;
+  font-size: 15px;
   color: #fff;
-  border: 2px solid #fff;
   cursor: pointer;
   transition: all 0.2s linear;
+  padding: 13px 30px;
+}
+.GoogleIcon {
+  background-color: #c53126;
+  padding: 13px;
+  font-size: 20px;
+  font-weight: bold;
+  align-self: center;
+  color: #fff;
+  height: 100%;
+  border-radius: 7px 0 0px 7px;
 }
 .Join {
   color: #e08e45;
+  margin-bottom: 2rem;
 }
 .LoginButton:hover {
-  background-color: #e08e45;
-  border-color: transparent;
 }
 @media (max-width: 600px) {
   .LoginButton {

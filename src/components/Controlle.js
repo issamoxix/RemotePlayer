@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { selectPlat } from "../features/app/appSlice";
 import PauseIcon from "@material-ui/icons/Pause";
 import VolumeUpIcon from "@material-ui/icons/VolumeUp";
 import VolumeDownIcon from "@material-ui/icons/VolumeDown";
@@ -10,6 +9,7 @@ import {
   selectSongPlay,
   selectVol,
   selectSongName,
+  selectPlat,
 } from "../features/player/playerSlice";
 import db from "../db/firebase";
 import { selectUser } from "../features/user/userSlice";
@@ -28,8 +28,17 @@ const Controlle = () => {
 
     return widget1;
   };
-  useEffect(() => {
+
+  const MediaCheck = () => {
+    var f = Go();
     if (playing) {
+      f.play();
+    } else {
+      f.pause();
+    }
+  };
+  useEffect(() => {
+    if (playing && plat === "sdc") {
       var r = Go();
       r.play();
       r.setVolume(Vol);
@@ -41,23 +50,27 @@ const Controlle = () => {
   return (
     <div className="ControlContainer">
       <div className="SongTitle">
-        <h2>{SongName.substring(0, 20)} </h2>
+        <h2>{SongName && SongName.substring(0, 20)} </h2>
         <p style={{ color: "#035F87", fontWeight: "bold" }}>
           {plat === "ytb" ? "Youtube" : "Soundcloud"}{" "}
         </p>
       </div>
+      <div id="ytplayer"></div>
       <div>
-        <iframe
-          id="myFrame"
-          title="player"
-          width="100%"
-          height="366"
-          scrolling="no"
-          frameborder="no"
-          allow="autoplay"
-          className="IframePlayer"
-          src={src}
-        ></iframe>
+        {plat === "sdc" && (
+          <iframe
+            id="myFrame"
+            title="player"
+            width="100%"
+            height="366"
+            scrolling="no"
+            frameborder="no"
+            allow="autoplay"
+            className="IframePlayer"
+            src={src}
+            onLoad={() => MediaCheck()}
+          ></iframe>
+        )}
       </div>
       <div className="ControlBody">
         <VolumeDownIcon style={{ fontSize: 30, cursor: "pointer" }} />
@@ -75,10 +88,6 @@ const Controlle = () => {
             onClick={() => {
               var p = Go();
               p.toggle();
-
-              // p.bind("playProgress", () =>
-              //   p.getPosition((x) => console.log(x))
-              // );
               db.collection("users").doc(user.email).update({
                 playing: false,
               });

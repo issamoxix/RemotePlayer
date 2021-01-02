@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { auth, provider } from "../db/firebase";
-import { selectPlat } from "../features/app/appSlice";
+import { selectPlat } from "../features/player/playerSlice";
+
 import "../styles/HomeStyles.css";
 import "../styles/LoginStyles.css";
 const LoginPage = () => {
@@ -23,11 +24,15 @@ const LoginPage = () => {
     >
       <div className="MainContainer">
         <div className="LoginWrapper">
-          <h1 className="Join">Start with Loging in ...</h1>
-
-          <button className="LoginButton" onClick={() => signIn()}>
-            Log in
-          </button>
+          <h1 className="Join">Log in</h1>
+          <form
+            className="LoginForm"
+            onClick={() => signIn()}
+            onSubmit={(e) => e.preventDefault()}
+          >
+            <span className="GoogleIcon">G</span>
+            <button className="LoginButton">LOGIN WITH GOOGLE</button>
+          </form>
         </div>
       </div>
     </div>

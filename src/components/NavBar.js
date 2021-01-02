@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { selectPlat, setPlat, setSearch } from "../features/app/appSlice";
+import { setSearch } from "../features/app/appSlice";
 import SearchRoundedIcon from "@material-ui/icons/SearchRounded";
 import ytb from "../assets/youtube.png";
 import sdc from "../assets/soundcloud.png";
@@ -10,7 +10,8 @@ import "../styles/Navbar.css";
 import { Avatar } from "@material-ui/core";
 import { logOut, selectUser } from "../features/user/userSlice";
 import ExitToAppRoundedIcon from "@material-ui/icons/ExitToAppRounded";
-import { auth } from "../db/firebase";
+import db, { auth } from "../db/firebase";
+import { selectPlat, setPlat } from "../features/player/playerSlice";
 
 const NavBar = ({ style }) => {
   const Plat = useSelector(selectPlat);
@@ -79,9 +80,14 @@ const NavBar = ({ style }) => {
           className="TogglePlayMobileNavBar"
           src={Plat !== "sdc" ? sdc : ytb}
           alt="plat"
-          onClick={() =>
-            dispatch(setPlat({ plat: Plat === "sdc" ? "ytb" : "sdc" }))
-          }
+          onClick={() => {
+            console.log(Plat);
+            db.collection("users")
+              .doc(user.email)
+              .update({
+                type: Plat === "sdc" ? "ytb" : "sdc",
+              });
+          }}
         />
         <Avatar className="AvatarIcon" src={user.photo} />
         <ExitToAppRoundedIcon
