@@ -15,6 +15,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import MusicController from "../components/MusicController";
 import { selectPlat, setPlat } from "../features/player/playerSlice";
+import db from "../db/firebase";
+import { selectUser } from "../features/user/userSlice";
 
 const ExploreMobilePage = () => {
   const [input, setInupt] = useState();
@@ -23,26 +25,26 @@ const ExploreMobilePage = () => {
   const Query = useSelector(selectQuery);
   const dispatch = useDispatch();
   const SearchResult = useSelector(selectSearch);
+  const user = useSelector(selectUser);
   const Search = (query, plat) => {
     dispatch(
       setQuery({
         query: query,
       })
     );
-    if (plat === "sdc") {
-      axios.get(`/api/sdc/${query}`).then((doc) => {
-        dispatch(
-          setSearch({
-            Search: doc.data.collection,
-          })
-        );
-        dispatch(
-          setQuery({
-            query: null,
-          })
-        );
-      });
-    }
+
+    axios.get(`/api/${plat}/${query}`).then((doc) => {
+      dispatch(
+        setSearch({
+          Search: doc.data.collection,
+        })
+      );
+      dispatch(
+        setQuery({
+          query: null,
+        })
+      );
+    });
   };
   useEffect(() => {
     if (Query) {
@@ -60,13 +62,19 @@ const ExploreMobilePage = () => {
           src={plat !== "sdc" ? sdc : ytb}
           alt="plat"
           onClick={() =>
-            dispatch(setPlat({ plat: plat === "sdc" ? "ytb" : "sdc" }))
+            db
+              .collection("users")
+              .doc(user.email)
+              .update({
+                type: plat === "sdc" ? "ytb" : "sdc",
+              })
           }
         />
         <form
           className="SearchForm"
           onSubmit={(e) => {
             e.preventDefault();
+
             Search(input, plat);
           }}
         >
@@ -89,7 +97,7 @@ const ExploreMobilePage = () => {
         </form>
       </div>
       <div className="SearchResult">
-        {plat === "sdc" && SearchResult ? (
+        {SearchResult ? (
           SearchResult.map((res, ket) => (
             <SearchCard
               key={ket}

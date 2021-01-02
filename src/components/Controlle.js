@@ -1,25 +1,37 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import PauseIcon from "@material-ui/icons/Pause";
 import VolumeUpIcon from "@material-ui/icons/VolumeUp";
 import VolumeDownIcon from "@material-ui/icons/VolumeDown";
 import PlayArrowRoundedIcon from "@material-ui/icons/PlayArrowRounded";
+import YouTube from "react-youtube";
 import {
   selectSongId,
   selectSongPlay,
   selectVol,
   selectSongName,
   selectPlat,
+  selectPl,
 } from "../features/player/playerSlice";
 import db from "../db/firebase";
 import { selectUser } from "../features/user/userSlice";
 const Controlle = () => {
+  const [pl, setPl] = useState();
   const plat = useSelector(selectPlat);
   const Vol = useSelector(selectVol);
   const user = useSelector(selectUser);
   const playing = useSelector(selectSongPlay);
   const SongName = useSelector(selectSongName);
   const SongId = useSelector(selectSongId);
+
+  const opts = {
+    height: "390",
+    width: "640",
+    playerVars: {
+      // https://developers.google.com/youtube/player_parameters
+      autoplay: 0,
+    },
+  };
   const src = `https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${SongId}&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`;
   const Go = () => {
     var iframeElement = document.querySelector("iframe");
@@ -38,15 +50,30 @@ const Controlle = () => {
     }
   };
   useEffect(() => {
-    if (playing && plat === "sdc") {
-      var r = Go();
-      r.play();
-      r.setVolume(Vol);
+    if (plat === "sdc") {
+      if (playing) {
+        var r = Go();
+        r.play();
+        r.setVolume(Vol);
+      } else {
+        var r = Go();
+        r.pause();
+      }
     } else {
-      var r = Go();
-      r.pause();
+      if (pl) {
+        if (playing) {
+          pl.playVideo();
+        } else {
+          pl.pauseVideo();
+        }
+      }
     }
-  }, [playing, Vol]);
+    if (Vol) {
+      if (pl) {
+        pl.setVolume(Vol);
+      }
+    }
+  }, [playing, Vol, plat]);
   return (
     <div className="ControlContainer">
       <div className="SongTitle">
@@ -56,8 +83,8 @@ const Controlle = () => {
         </p>
       </div>
       <div id="ytplayer"></div>
-      <div>
-        {plat === "sdc" && (
+      <div className="HidenFrame">
+        {plat === "sdc" ? (
           <iframe
             id="myFrame"
             title="player"
@@ -70,6 +97,16 @@ const Controlle = () => {
             src={src}
             onLoad={() => MediaCheck()}
           ></iframe>
+        ) : (
+          <YouTube
+            videoId={SongId}
+            opts={opts}
+            onReady={(e) => {
+              {
+                setPl(e.target);
+              }
+            }}
+          />
         )}
       </div>
       <div className="ControlBody">
@@ -86,8 +123,12 @@ const Controlle = () => {
               margin: "0 1rem",
             }}
             onClick={() => {
-              var p = Go();
-              p.toggle();
+              if (plat === "sdc") {
+                var p = Go();
+                p.toggle();
+              } else {
+                pl.pauseVideo();
+              }
               db.collection("users").doc(user.email).update({
                 playing: false,
               });
@@ -105,8 +146,12 @@ const Controlle = () => {
               margin: "0 1rem",
             }}
             onClick={() => {
-              var p = Go();
-              p.toggle();
+              if (plat === "sdc") {
+                var p = Go();
+                p.toggle();
+              } else {
+                pl.playVideo();
+              }
               db.collection("users").doc(user.email).update({
                 playing: true,
               });

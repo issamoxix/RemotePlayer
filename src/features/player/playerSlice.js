@@ -9,6 +9,7 @@ export const playerSlice = createSlice({
     artW: null,
     vol: 100,
     plat: "sdc",
+    pl: false,
   },
   reducers: {
     addSong: (state, action) => {
@@ -25,10 +26,13 @@ export const playerSlice = createSlice({
     setPlat: (state, action) => {
       state.plat = action.payload.plat;
     },
+    setPl: (state, action) => {
+      state.pl = action.payload.pl;
+    },
   },
 });
 
-export const { addSong, setVol, setPlat } = playerSlice.actions;
+export const { addSong, setVol, setPlat, setPl } = playerSlice.actions;
 
 // export const selectPlat = (state) => state.player.plat;
 
@@ -38,4 +42,6 @@ export const selectSongName = (state) => state.player.songName;
 export const selectVol = (state) => state.player.vol;
 export const selectArt = (state) => state.player.artW;
 export const selectPlat = (state) => state.player.plat;
+export const selectPl = (state) => state.player.pl;
+
 export default playerSlice.reducer;

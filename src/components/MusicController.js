@@ -50,7 +50,10 @@ const MusicController = ({ mobile }) => {
           justifyContent: mobile && "center",
         }}
       >
-        <h3 style={{ marginBottom: "-7px" }}> {SongName} </h3>
+        <h3 style={{ marginBottom: "-7px" }}>
+          {" "}
+          {SongName && SongName.substring(0, 13)}{" "}
+        </h3>
         <p style={{ color: "#035F87", fontWeight: "bold" }}>
           {plat === "ytb" ? "Youtube" : "Soundcloud"}
         </p>
