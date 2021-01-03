@@ -11,7 +11,6 @@ import {
   selectVol,
   selectSongName,
   selectPlat,
-  selectPl,
 } from "../features/player/playerSlice";
 import db from "../db/firebase";
 import { selectUser } from "../features/user/userSlice";
@@ -32,6 +31,7 @@ const Controlle = () => {
       autoplay: 0,
     },
   };
+
   const src = `https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${SongId}&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`;
   const Go = () => {
     var iframeElement = document.querySelector("iframe");
@@ -59,7 +59,7 @@ const Controlle = () => {
         var r = Go();
         r.pause();
       }
-    } else {
+    } else if (plat === "ytb") {
       if (pl) {
         if (playing) {
           pl.playVideo();
@@ -68,10 +68,12 @@ const Controlle = () => {
         }
       }
     }
-    if (Vol) {
+    if (Vol && plat === "ytb") {
       if (pl) {
         pl.setVolume(Vol);
       }
+    } else {
+      setPl(null);
     }
   }, [playing, Vol, plat]);
   return (
@@ -82,6 +84,7 @@ const Controlle = () => {
           {plat === "ytb" ? "Youtube" : "Soundcloud"}{" "}
         </p>
       </div>
+
       <div id="ytplayer"></div>
       <div className="HidenFrame">
         {plat === "sdc" ? (
@@ -98,15 +101,17 @@ const Controlle = () => {
             onLoad={() => MediaCheck()}
           ></iframe>
         ) : (
-          <YouTube
-            videoId={SongId}
-            opts={opts}
-            onReady={(e) => {
-              {
-                setPl(e.target);
-              }
-            }}
-          />
+          plat === "ytb" && (
+            <YouTube
+              videoId={SongId}
+              opts={opts}
+              onReady={(e) => {
+                {
+                  plat === "ytb" && setPl(e.target);
+                }
+              }}
+            />
+          )
         )}
       </div>
       <div className="ControlBody">

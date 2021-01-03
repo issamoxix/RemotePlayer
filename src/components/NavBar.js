@@ -81,7 +81,6 @@ const NavBar = ({ style }) => {
           src={Plat !== "sdc" ? sdc : ytb}
           alt="plat"
           onClick={() => {
-            console.log(Plat);
             db.collection("users")
               .doc(user.email)
               .update({
