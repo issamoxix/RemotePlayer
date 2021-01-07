@@ -11,7 +11,7 @@
   width: 100%;
   /* switch with none */
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(15%, 1fr));
   padding: 10px;
   grid-gap: 10px;
   overflow-y: auto;
@@ -21,20 +21,41 @@
   height: 47vh;
   width: 100%;
   color: #fff;
-
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s linear;
+  cursor: pointer;
+}
+.Card:hover {
+  transform: translateY(-3px);
+}
+.PlaybuttonIcon {
+  position: absolute;
+  bottom: -5%;
+  right: 5%;
+  width: 37px;
+  height: 37px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 7px;
+  cursor: pointer;
+}
+.PlaybuttonIcon .MuiSvgIcon-root {
+  font-size: 2rem;
 }
 .CardImage {
   height: 70%;
   /* background: url("http://192.168.1.129:3000/images/banner.jpg"); */
-  background-size: contain;
+  background-size: cover;
   background-position: center;
-  border-radius: 7px;
+  border-radius: 17px;
   background-repeat: no-repeat;
+  flex: 1;
+  position: relative;
 }
 .CardBody h3 {
   color: #f1f1f1;
-  margin-bottom: -7px;
 }
 .PlayButton {
   border: none;

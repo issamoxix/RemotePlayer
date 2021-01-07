@@ -24,7 +24,7 @@ const LoginPage = () => {
     >
       <div className="MainContainer">
         <div className="LoginWrapper">
-          <h1 className="Join">Log in</h1>
+          <h1 className="Join">Sign in</h1>
           <form
             className="LoginForm"
             onClick={() => signIn()}

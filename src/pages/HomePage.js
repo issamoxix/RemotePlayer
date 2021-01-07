@@ -12,7 +12,9 @@ const HomePage = () => {
       <div className="MainContainer">
         <div className="Wrapper">
           <div className="BodyContainer">
-            <h1>RemotePlayer</h1>
+            <h1>
+              Remote<span style={{ color: "rgb(147, 3, 46)" }}>Player</span>
+            </h1>
             <p>
               Nostrud culpa nisi veniam enim exercitation consectetur ad minim
               eiusmod ex eu commodo. Dolor mollit nostrud laborum commodo nulla
@@ -52,7 +54,11 @@ const HomePage = () => {
               </Link>
             </div>
           </div>
-          <img src={Mkd} alt="Music" />
+          <img
+            src={Mkd}
+            alt="Music"
+            style={{ marginRight: "2rem", borderRadius: "17px" }}
+          />
         </div>
       </div>
     </div>

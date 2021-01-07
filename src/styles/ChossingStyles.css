@@ -11,6 +11,9 @@
 .choForm {
   transition: all 0.2s linear;
 }
+.CH__p {
+  font-size: 3vw;
+}
 .choForm:hover {
   transform: translateY(-3px);
 }

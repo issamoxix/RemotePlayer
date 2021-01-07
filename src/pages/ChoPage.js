@@ -27,7 +27,7 @@ const ChoPage = () => {
         >
           Remote<span style={{ color: "#93032E" }}>Player</span>
         </h1>
-        <p style={{ color: "#fff" }}>
+        <p className="CH__p" style={{ color: "#fff" }}>
           Start with choosing what you wanna use .
         </p>
         <div style={{ display: "flex", marginTop: "2rem" }}>

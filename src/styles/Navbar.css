@@ -78,8 +78,46 @@ a {
 }
 .AvatarIcon {
   margin: 0 1rem;
+  cursor: pointer;
 }
-@media (max-width: 600px) {
+li {
+  list-style: none;
+}
+.ProfileIcon ul {
+  display: none;
+  transition: all 0.2s linear;
+  flex-direction: column;
+  position: absolute;
+  background-color: #0006;
+  color: #000;
+  border-radius: 10px;
+  /* margin-top: 5px; */
+  width: 10%;
+  z-index: 2;
+}
+.ProfileIcon ul li {
+  padding: 10px;
+  border-bottom: 1px solid gray;
+  cursor: pointer;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s linear;
+}
+.ProfileIcon ul a li:first-child {
+  border-radius: 10px 10px 0 0;
+}
+.ProfileIcon ul li:last-child {
+  border-radius: 0 0 10px 10px;
+}
+.ProfileIcon ul li:hover {
+  background-color: #00000070;
+}
+.ProfileIcon:hover ul {
+  display: flex;
+}
+@media (max-width: 750px) {
   .searchForm {
     display: none;
   }

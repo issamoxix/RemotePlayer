@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import MusicController from "../components/MusicController";
-import { selectPlat, setPlat } from "../features/player/playerSlice";
+import { selectPlat } from "../features/player/playerSlice";
 import db from "../db/firebase";
 import { selectUser } from "../features/user/userSlice";
 
@@ -55,7 +55,15 @@ const ExploreMobilePage = () => {
     <div className="MobileExploreContainer">
       <div className="Header">
         <Link to="/">
-          <h2>RemotePlayer</h2>
+          <h2>
+            Remote
+            <span
+              className="TitleSpan"
+              style={{ color: plat === "sdc" ? "#E08E45" : "#93032E" }}
+            >
+              Player
+            </span>
+          </h2>
         </Link>
         <img
           className="TogglePlayMobile"

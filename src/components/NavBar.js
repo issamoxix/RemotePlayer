@@ -11,7 +11,7 @@ import { Avatar } from "@material-ui/core";
 import { logOut, selectUser } from "../features/user/userSlice";
 import ExitToAppRoundedIcon from "@material-ui/icons/ExitToAppRounded";
 import db, { auth } from "../db/firebase";
-import { selectPlat, setPlat } from "../features/player/playerSlice";
+import { selectPlat } from "../features/player/playerSlice";
 
 const NavBar = ({ style }) => {
   const Plat = useSelector(selectPlat);
@@ -88,13 +88,19 @@ const NavBar = ({ style }) => {
               });
           }}
         />
-        <Avatar className="AvatarIcon" src={user.photo} />
-        <ExitToAppRoundedIcon
-          style={{
-            cursor: "pointer",
-          }}
-          onClick={() => log_out()}
-        />
+        <li className="ProfileIcon">
+          <Avatar className="AvatarIcon" src={user.photo} />
+          <ul>
+            <Link to="/display">
+              <li>Display</li>
+            </Link>
+            <Link to="/remote">
+              {" "}
+              <li>Remote</li>
+            </Link>
+            <li onClick={() => log_out()}>Log Out</li>
+          </ul>
+        </li>
       </div>
     </div>
   );

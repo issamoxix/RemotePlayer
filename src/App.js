@@ -10,6 +10,7 @@ import { selectUser, setUser } from "./features/user/userSlice";
 import db, { auth } from "./db/firebase";
 
 import { addSong, selectPlat } from "./features/player/playerSlice";
+import NewPlayer from "./pages/NewPlayer";
 function npage() {
   return <div>404</div>;
 }
@@ -76,11 +77,14 @@ function App() {
         {!user ? (
           <>
             <Route path="/" exact component={HomePage} />
+            <Route path="/display" exact component={HomePage} />
+            <Route path="/remote" exact component={HomePage} />
             <Route path="/login" component={LoginPage} />
           </>
         ) : (
           <>
             <Route path="/display" exact component={PlayerPage} />
+            <Route path="/player" exact component={NewPlayer} />
             <Route path="/remote" exact component={ExplorePage} />
             <Route path="/login" exact component={ChoPage} />
             <Route path="/" exact component={ChoPage} />

@@ -14,7 +14,7 @@ const Banner = () => {
         ? setImgz(`${artW.split("-large.jpg")[0]}-t500x500.jpg`)
         : setImgz(artW);
     }
-  }, [artW]);
+  }, [artW, plat]);
   return (
     <div
       className="SongBanner"

@@ -4,12 +4,22 @@ import db from "../db/firebase";
 import { selectPlat } from "../features/player/playerSlice";
 
 import { selectUser } from "../features/user/userSlice";
-
+import PlayArrowRoundedIcon from "@material-ui/icons/PlayArrowRounded";
 const SearchCard = ({ img, title, Sid }) => {
   const plat = useSelector(selectPlat);
   const user = useSelector(selectUser);
+  const handleCardClick = () => {
+    db.collection("users").doc(user.email).update({
+      playing: true,
+      name: title,
+      type: plat,
+      id: Sid,
+      vol: 50,
+      artW: img,
+    });
+  };
   return (
-    <div className="Card">
+    <div className="Card" onClick={() => handleCardClick()}>
       <div
         className="CardImage"
         style={{
@@ -18,7 +28,17 @@ const SearchCard = ({ img, title, Sid }) => {
               ? `URL('${img && img.split("-large.jpg")[0]}-t500x500.jpg')`
               : `URL('${img && img}')`,
         }}
-      ></div>
+      >
+        <div
+          className="PlaybuttonIcon"
+          style={{ background: plat === "sdc" ? "#E08E45" : "#93032E" }}
+          onClick={() => {
+            handleCardClick();
+          }}
+        >
+          <PlayArrowRoundedIcon />
+        </div>
+      </div>
       <div className="CardBody">
         <h4>{title.substring(0, 17)} </h4>
         <p
@@ -26,7 +46,7 @@ const SearchCard = ({ img, title, Sid }) => {
         >
           {plat === "ytb" ? "Youtube" : "Soundcloud"}{" "}
         </p>
-        <button
+        {/* <button
           className="PlayButton"
           style={{
             background: plat === "sdc" ? "#E08E45" : "#93032E",
@@ -43,7 +63,7 @@ const SearchCard = ({ img, title, Sid }) => {
           }}
         >
           Play
-        </button>
+        </button> */}
       </div>
     </div>
   );
