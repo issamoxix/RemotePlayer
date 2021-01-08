@@ -86,8 +86,8 @@ function App() {
             <Route path="/display" exact component={PlayerPage} />
             <Route path="/player" exact component={NewPlayer} />
             <Route path="/remote" exact component={ExplorePage} />
-            <Route path="/login" exact component={ChoPage} />
-            <Route path="/" exact component={ChoPage} />
+            <Route path="/login" exact component={NewPlayer} />
+            <Route path="/" exact component={NewPlayer} />
           </>
         )}
       </Switch>

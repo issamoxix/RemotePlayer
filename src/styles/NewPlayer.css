@@ -1,70 +1,65 @@
-.Player__container {
-  height: 100%;
+.Main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  width: 100vw;
+  backdrop-filter: blur(5px);
+  background: url("http://192.168.1.129:3000/images/pic3.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.Main__Container {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  backdrop-filter: blur(8px);
-  border-radius: 7px;
-}
-.Player__body {
+  height: 100%;
   flex: 1;
-  height: 80%;
-}
-/* font-family: 'Goldman', cursive; */
-.Info__card {
-  flex: 0.5;
+  align-items: center;
+  justify-content: center;
   display: flex;
-
-  height: 50%;
-  padding: 10px;
+  backdrop-filter: blur(5px);
 }
-.reverse__card {
-  flex-direction: row-reverse;
+.NavBar {
+  backdrop-filter: blur(5px);
 }
-.Info__card h1 {
-  color: #fff;
-  font-family: "Goldman", cursive;
-  font-weight: 700;
-  font-size: 3rem;
-}
-.Info__body p {
-  font-family: sans-serif;
-  color: #ddd;
-}
-.Info__body {
-  flex: 0.5;
+.Main__body {
+  height: 40%;
+  width: 34rem;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-.Info__image {
-  flex: 0.5;
+.Main__body h1 {
+  text-align: center;
+  color: #fff;
+  /* text-decoration: underline; */
+  font-family: "Source Code Pro", monospace;
+}
+.Main__body p {
+  color: #fff;
+  text-align: center;
+}
+.buttons__container {
   display: flex;
-
   align-items: center;
   justify-content: center;
 }
-.Info__image img {
-  height: 80%;
-}
-.Info__body button {
+.buttons__container button {
   border: none;
-  color: #fff;
-  background-color: #000000b3;
   padding: 10px;
-  font-family: "Goldman", cursive;
-  font-weight: 400;
-  font-size: large;
+  margin: 0 1rem;
   border-radius: 17px;
+  width: 50%;
   cursor: pointer;
-  transition: all 0.2s linear;
+  background-color: #0000008f;
+  color: #fff;
+  font-size: 17px;
+  transition: background-color 1s ease-out;
+  transition: transform 0.2s linear;
 }
-.Info__body button:hover {
+.buttons__container button:hover {
   transform: translateY(-3px);
-}
-.Info__body button:active {
-  transform: translateY(0px);
 }
 .remote_btn:hover {
   background-color: rgb(224, 142, 69);

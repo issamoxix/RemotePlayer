@@ -95,6 +95,9 @@ li {
   width: 10%;
   z-index: 2;
 }
+.ProfileIcon .MuiAvatar-root {
+  border-radius: 30%;
+}
 .ProfileIcon ul li {
   padding: 10px;
   border-bottom: 1px solid gray;

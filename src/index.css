@@ -23,10 +23,12 @@ code {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: backgroud 1s ease-out;
 }
 .MainContainer {
   height: 88%;
   width: 80%;
+
   border-radius: 7px;
   background: url("http://192.168.1.129:3000/images/pic3.jpg");
   background-repeat: no-repeat;
