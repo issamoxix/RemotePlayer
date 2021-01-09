@@ -1,22 +1,25 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import db from "../db/firebase";
-import { selectPlat } from "../features/player/playerSlice";
+import { selectPlat, selectVol } from "../features/player/playerSlice";
 
 import { selectUser } from "../features/user/userSlice";
 import PlayArrowRoundedIcon from "@material-ui/icons/PlayArrowRounded";
 const SearchCard = ({ img, title, Sid }) => {
   const plat = useSelector(selectPlat);
   const user = useSelector(selectUser);
+  const get_vol = useSelector(selectVol);
   const handleCardClick = () => {
-    db.collection("users").doc(user.email).update({
-      playing: true,
-      name: title,
-      type: plat,
-      id: Sid,
-      vol: 50,
-      artW: img,
-    });
+    db.collection("users")
+      .doc(user.email)
+      .update({
+        playing: true,
+        name: title,
+        type: plat,
+        id: Sid,
+        vol: get_vol ? get_vol : 50,
+        artW: img,
+      });
   };
   return (
     <div className="Card" onClick={() => handleCardClick()}>

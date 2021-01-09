@@ -15,7 +15,8 @@
   padding: 10px;
   grid-gap: 10px;
   overflow-y: auto;
-  height: 84%;
+  /* height: 84%; */
+  height: 100%;
 }
 .Card {
   height: 47vh;
@@ -53,6 +54,7 @@
   background-repeat: no-repeat;
   flex: 1;
   position: relative;
+  margin-bottom: 10px;
 }
 .CardBody h3 {
   color: #f1f1f1;
@@ -99,52 +101,110 @@
 
 /* Music Controll bottom bar */
 .MusicControllerContainer {
-  width: 100%;
-  border-radius: 0 0 7px;
-  height: 19%;
+  width: 80%;
+  border-radius: 17px;
+  height: 9%;
   padding: 10px;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  margin: 2rem 0;
   align-items: center;
+  background: #000000bf;
+  position: absolute;
+  backdrop-filter: blur(8px);
 }
 .SongArtPic {
   background-repeat: no-repeat;
   background-size: contain;
-  width: 11%;
-  height: 100%;
+  background-position: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  transform: translateY(-20px);
 }
-.SongTitle {
+.SongController {
+  display: flex;
+  align-items: center;
+}
+.SongController .MuiSvgIcon-root {
+  border-radius: 50px;
+  font-size: 45px;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  transition: all 0.2s linear 0s;
   color: #fff;
 }
+.SongTitle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.SongTitle h3 {
+  color: #ddd;
+  font-weight: light;
+}
+.SongTitle p {
+  color: gray;
+  font-weight: lighter;
+}
 .ProgressBar {
-  width: 74vw;
   background-color: #fff;
   height: 8px;
   margin: 0 1rem;
   flex: 1;
   position: relative;
 }
+.VolumeContainer .MuiSvgIcon-root {
+  color: #e1e1e1;
+  font-size: 1.5rem;
+}
+.VolumeContainer {
+  display: flex;
+  align-items: center;
+  flex: 0.9;
+  width: 100%;
+}
 .Bar {
   background: red;
   height: 100%;
 }
 @media (max-width: 600px) {
+  .MusicControllerContainer {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    background: #00000049;
+  }
+  .SongArtPic {
+    display: none;
+  }
   .searchResult {
     /* switch with none */
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    height: 90vh;
+    justify-content: center;
   }
   .CardImage {
-    border-radius: 0;
-    flex: 0.3;
+    height: 250px;
+    width: 100%;
+    flex: none;
   }
   .Card {
     display: flex;
     align-items: center;
-    width: 100%;
-    height: 100%;
+    width: 100px;
+    max-width: 40%;
+    margin: 0 0.5rem;
   }
-  .CardBody {
-    flex: 1;
+
+  .SongTitle h3 {
+    font-size: 15px;
+    margin-bottom: 0px;
+  }
+  .PlaybuttonIcon {
+    bottom: 5%;
   }
 }

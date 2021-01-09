@@ -12,6 +12,7 @@ import {
 } from "../features/player/playerSlice";
 import db from "../db/firebase";
 import { selectUser } from "../features/user/userSlice";
+import VolumeDownRoundedIcon from "@material-ui/icons/VolumeDownRounded";
 
 const MusicController = ({ mobile }) => {
   const plat = useSelector(selectPlat);
@@ -31,73 +32,41 @@ const MusicController = ({ mobile }) => {
       style={{
         position: mobile && "fixed",
         bottom: 0,
-        background: mobile && "#000",
       }}
     >
       <div
         className="SongArtPic"
         style={{
           backgroundImage: `url('${ArtW}')`,
-          display: mobile && "none",
         }}
       ></div>
-      <div
-        className="SongTitle"
-        style={{
-          height: "100%",
-          display: mobile && "flex",
-          flexDirection: mobile && "column",
-          justifyContent: mobile && "center",
-        }}
-      >
-        <h3 style={{ marginBottom: "-7px" }}>
-          {" "}
-          {SongName && SongName.substring(0, 13)}{" "}
-        </h3>
-        <p style={{ color: "#035F87", fontWeight: "bold" }}>
-          {plat === "ytb" ? "Youtube" : "Soundcloud"}
-        </p>
+      <div className="SongTitle">
+        <h3> {SongName && SongName.substring(0, 13)} </h3>
+        <p>{plat === "ytb" ? "Youtube" : "Soundcloud"}</p>
       </div>
       <div className="SongController">
         {playing ? (
-          <PauseIcon
-            style={{
-              background: plat === "sdc" ? "#E08E45" : "#93032E",
-              borderRadius: 50,
-              fontSize: 50,
-              color: "#fff",
-              cursor: "pointer",
-              transition: "all 0.2s linear",
-            }}
-            onClick={() => TogglePlaying(!playing)}
-          />
+          <PauseIcon onClick={() => TogglePlaying(!playing)} />
         ) : (
-          <PlayArrowRoundedIcon
-            style={{
-              background: plat === "sdc" ? "#E08E45" : "#93032E",
-              borderRadius: 50,
-              fontSize: 50,
-              color: "#fff",
-              cursor: "pointer",
-              transition: "all 0.2s linear",
-            }}
-            onClick={() => TogglePlaying(!playing)}
-          />
+          <PlayArrowRoundedIcon onClick={() => TogglePlaying(!playing)} />
         )}
       </div>
       {/* <ProgressBar prg={20} /> */}
-      <input
-        className="ProgressBar"
-        onChange={(e) => {
-          db.collection("users").doc(user.email).update({
-            vol: e.target.value,
-          });
-        }}
-        value={vol}
-        type="range"
-        min="0"
-        max="100"
-      />
+      <div className="VolumeContainer">
+        <VolumeDownRoundedIcon />
+        <input
+          className="ProgressBar"
+          onChange={(e) => {
+            db.collection("users").doc(user.email).update({
+              vol: e.target.value,
+            });
+          }}
+          value={vol}
+          type="range"
+          min="0"
+          max="100"
+        />
+      </div>
     </div>
   );
 };

@@ -45,7 +45,9 @@ const Controlle = () => {
     var f = Go();
     if (playing) {
       f.play();
+      f.setVolume(Vol);
     } else {
+      f.setVolume(Vol);
       f.pause();
     }
   };
@@ -53,6 +55,7 @@ const Controlle = () => {
     if (plat === "sdc") {
       if (playing) {
         var r = Go();
+
         r.play();
         r.setVolume(Vol);
       } else {

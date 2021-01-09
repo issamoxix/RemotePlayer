@@ -24,6 +24,7 @@ code {
   justify-content: center;
   align-items: center;
   transition: backgroud 1s ease-out;
+  background: url("http://192.168.1.129:3000/images/pic3.jpg");
 }
 .MainContainer {
   height: 88%;
