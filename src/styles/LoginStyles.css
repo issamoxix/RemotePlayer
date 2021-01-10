@@ -13,6 +13,7 @@
   border-radius: 7px;
   display: flex;
   align-items: center;
+  margin: 1rem 0;
   cursor: pointer;
 }
 .LoginButton {
@@ -37,10 +38,18 @@
   border-radius: 7px 0 0px 7px;
 }
 .Join {
-  color: #e08e45;
+  color: lightgray;
   margin-bottom: 2rem;
+  font-weight: lighter;
 }
 .LoginButton:hover {
+}
+.LoginSocials {
+  /* background-color: white; */
+  backdrop-filter: blur(5px);
+  padding: 20px;
+  border: 2px solid gray;
+  border-radius: 17px;
 }
 @media (max-width: 600px) {
   .LoginButton {

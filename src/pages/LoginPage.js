@@ -18,21 +18,36 @@ const LoginPage = () => {
     }
   }, [history, Plat]);
   return (
-    <div
-      style={{ background: Plat === "sdc" ? "#E08E45" : "#93032E" }}
-      className="HeroContainer"
-    >
+    <div className="HeroContainer">
       <div className="MainContainer">
         <div className="LoginWrapper">
-          <h1 className="Join">Sign in</h1>
-          <form
-            className="LoginForm"
-            onClick={() => signIn()}
-            onSubmit={(e) => e.preventDefault()}
-          >
-            <span className="GoogleIcon">G</span>
-            <button className="LoginButton">LOGIN WITH GOOGLE</button>
-          </form>
+          <div className="LoginSocials">
+            <h1 className="Join">Sign in</h1>
+            <form
+              className="LoginForm"
+              onClick={() => signIn()}
+              onSubmit={(e) => e.preventDefault()}
+            >
+              <span className="GoogleIcon">G</span>
+              <button className="LoginButton">LOGIN WITH GOOGLE</button>
+            </form>
+            <form
+              className="LoginForm"
+              onClick={() => signIn()}
+              onSubmit={(e) => e.preventDefault()}
+            >
+              <span className="GoogleIcon">G</span>
+              <button className="LoginButton">LOGIN WITH GOOGLE</button>
+            </form>
+            <form
+              className="LoginForm"
+              onClick={() => signIn()}
+              onSubmit={(e) => e.preventDefault()}
+            >
+              <span className="GoogleIcon">G</span>
+              <button className="LoginButton">LOGIN WITH GOOGLE</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
