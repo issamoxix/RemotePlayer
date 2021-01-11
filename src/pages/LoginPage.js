@@ -23,22 +23,7 @@ const LoginPage = () => {
         <div className="LoginWrapper">
           <div className="LoginSocials">
             <h1 className="Join">Sign in</h1>
-            <form
-              className="LoginForm"
-              onClick={() => signIn()}
-              onSubmit={(e) => e.preventDefault()}
-            >
-              <span className="GoogleIcon">G</span>
-              <button className="LoginButton">LOGIN WITH GOOGLE</button>
-            </form>
-            <form
-              className="LoginForm"
-              onClick={() => signIn()}
-              onSubmit={(e) => e.preventDefault()}
-            >
-              <span className="GoogleIcon">G</span>
-              <button className="LoginButton">LOGIN WITH GOOGLE</button>
-            </form>
+            {/* Add more login methods in the futur */}
             <form
               className="LoginForm"
               onClick={() => signIn()}

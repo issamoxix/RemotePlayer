@@ -1,9 +1,8 @@
 import React from "react";
 import NavBar from "../components/NavBar";
 import "../styles/NewPlayer.css";
-import remote from "../assets/remote.png";
-import display from "../assets/display.png";
-import { Link, useHistory } from "react-router-dom";
+
+import { useHistory } from "react-router-dom";
 const NewPlayer = () => {
   let history = useHistory();
   return (

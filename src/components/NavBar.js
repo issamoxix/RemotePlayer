@@ -9,13 +9,17 @@ import sdc from "../assets/soundcloud.png";
 import "../styles/Navbar.css";
 import { Avatar } from "@material-ui/core";
 import { logOut, selectUser } from "../features/user/userSlice";
-import ExitToAppRoundedIcon from "@material-ui/icons/ExitToAppRounded";
 import db, { auth } from "../db/firebase";
 import { selectPlat } from "../features/player/playerSlice";
+import FilterListIcon from "@material-ui/icons/FilterList";
 
 const NavBar = ({ style }) => {
   const Plat = useSelector(selectPlat);
   const user = useSelector(selectUser);
+  const [open, setOpen] = useState(false);
+  const [filer, setFiler] = useState(false);
+  const [mx, setMx] = useState(20);
+
   const dispatch = useDispatch();
 
   const [input, setInupt] = useState();
@@ -23,8 +27,8 @@ const NavBar = ({ style }) => {
     auth.signOut();
     dispatch(logOut());
   };
-  const Search = (query, plat) => {
-    axios.get(`/api/${plat}/${query}`).then((doc) => {
+  const Search = (query, plat, mx) => {
+    axios.get(`/api/${plat}/${query}/${mx ? mx : 20}`).then((doc) => {
       dispatch(
         setSearch({
           Search: doc.data.collection,
@@ -51,7 +55,7 @@ const NavBar = ({ style }) => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            Search(input, Plat);
+            Search(input, Plat, mx);
           }}
           className="searchForm"
         >
@@ -72,7 +76,23 @@ const NavBar = ({ style }) => {
               transform: "translateY(-50%)",
             }}
           />
+          <FilterListIcon
+            onClick={() => setFiler(!filer)}
+            style={{ color: "#fff", cursor: "pointer" }}
+          />
         </form>
+        {filer && (
+          <div className="Filtercontainer">
+            <h3>Search Result</h3>
+            <input
+              type="text"
+              value={mx}
+              onChange={(e) => setMx(e.target.value)}
+              className="FilterInput"
+              placeholder="20"
+            />
+          </div>
+        )}
       </div>
       <div className="UserTab">
         <img
@@ -89,17 +109,23 @@ const NavBar = ({ style }) => {
           }}
         />
         <li className="ProfileIcon">
-          <Avatar className="AvatarIcon" src={user.photo} />
-          <ul>
-            <Link to="/display">
-              <li>Display</li>
-            </Link>
-            <Link to="/remote">
-              {" "}
-              <li>Remote</li>
-            </Link>
-            <li onClick={() => log_out()}>Log Out</li>
-          </ul>
+          <Avatar
+            className="AvatarIcon"
+            onClick={() => setOpen(!open)}
+            src={user.photo}
+          />
+          {open && (
+            <ul>
+              <Link to="/display">
+                <li>Display</li>
+              </Link>
+              <Link to="/remote">
+                {" "}
+                <li>Remote</li>
+              </Link>
+              <li onClick={() => log_out()}>Log Out</li>
+            </ul>
+          )}
         </li>
       </div>
     </div>

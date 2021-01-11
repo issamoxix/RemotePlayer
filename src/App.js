@@ -4,16 +4,13 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import { useDispatch, useSelector } from "react-redux";
 import PlayerPage from "./pages/PlayerPage";
-import ChoPage from "./pages/ChoPage";
 import ExplorePage from "./pages/ExplorePage";
 import { selectUser, setUser } from "./features/user/userSlice";
 import db, { auth } from "./db/firebase";
 
 import { addSong, selectPlat } from "./features/player/playerSlice";
 import NewPlayer from "./pages/NewPlayer";
-function npage() {
-  return <div>404</div>;
-}
+
 function App() {
   const [check, setCheck] = useState(false);
   const user = useSelector(selectUser);

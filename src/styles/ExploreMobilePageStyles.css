@@ -12,6 +12,7 @@
   align-items: center;
   padding: 10px;
   height: 10vh;
+  width: 100%;
   background-color: transparent;
   position: absolute;
   z-index: 2;
@@ -23,6 +24,32 @@
 .SearchForm {
   flex: 0.8;
   border-bottom: 2px solid gray;
+  display: flex;
+  align-items: center;
+}
+.Filtercontainer {
+  position: absolute;
+  right: 0;
+  top: 10vh;
+  display: flex;
+  align-items: center;
+  /* justify-content: flex-end; */
+  width: 100%;
+  background: #00000070;
+  backdrop-filter: blur(5px);
+  color: #fff;
+  padding: 10px;
+}
+.FilterInput {
+  border-color: transparent;
+  border-bottom: 3px solid gray;
+  width: 60%;
+  padding: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #fff;
+  margin-left: 1rem;
+  background-color: transparent;
 }
 .SearchInput {
   width: 90%;

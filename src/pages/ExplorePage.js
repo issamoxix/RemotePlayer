@@ -10,8 +10,8 @@ const ExplorePage = () => {
   const [scr, setscr] = useState(true);
   const SearchResult = useSelector(selectSearch);
   const div = document.getElementsByClassName("searchResult")[0];
-  let scroll = 0;
   useEffect(() => {
+    let scroll = 0;
     div &&
       div.addEventListener("scroll", () => {
         if (scroll > div.scrollTop) {

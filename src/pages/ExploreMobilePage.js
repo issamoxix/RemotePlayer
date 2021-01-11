@@ -17,23 +17,26 @@ import MusicController from "../components/MusicController";
 import { selectPlat } from "../features/player/playerSlice";
 import db from "../db/firebase";
 import { selectUser } from "../features/user/userSlice";
+import FilterListIcon from "@material-ui/icons/FilterList";
 
 const ExploreMobilePage = () => {
   const [input, setInupt] = useState();
+  const [mx, setMx] = useState(20);
+  const [open, setOpen] = useState(false);
   const [Qw, setQ] = useState();
   const plat = useSelector(selectPlat);
   const Query = useSelector(selectQuery);
   const dispatch = useDispatch();
   const SearchResult = useSelector(selectSearch);
   const user = useSelector(selectUser);
-  const Search = (query, plat) => {
+  const Search = (query, plat, mx) => {
     dispatch(
       setQuery({
         query: query,
       })
     );
 
-    axios.get(`/api/${plat}/${query}`).then((doc) => {
+    axios.get(`/api/${plat}/${query}/${mx ? mx : 20}`).then((doc) => {
       dispatch(
         setSearch({
           Search: doc.data.collection,
@@ -56,12 +59,12 @@ const ExploreMobilePage = () => {
       <div className="Header">
         <Link to="/">
           <h2>
-            Remote
+            R
             <span
               className="TitleSpan"
               style={{ color: plat === "sdc" ? "#E08E45" : "#93032E" }}
             >
-              Player
+              P
             </span>
           </h2>
         </Link>
@@ -83,7 +86,7 @@ const ExploreMobilePage = () => {
           onSubmit={(e) => {
             e.preventDefault();
 
-            Search(input, plat);
+            Search(input, plat, mx);
           }}
         >
           <input
@@ -102,7 +105,23 @@ const ExploreMobilePage = () => {
               color: "#fff",
             }}
           />
+          <FilterListIcon
+            onClick={() => setOpen(!open)}
+            style={{ color: "#fff", cursor: "pointer" }}
+          />
         </form>
+        {open && (
+          <div className="Filtercontainer">
+            <h3>Search Result</h3>
+            <input
+              type="text"
+              value={mx}
+              onChange={(e) => setMx(e.target.value)}
+              className="FilterInput"
+              placeholder="20"
+            />
+          </div>
+        )}
       </div>
       <div className="SearchResult">
         {SearchResult ? (

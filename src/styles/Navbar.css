@@ -59,6 +59,8 @@ a {
 }
 .searchForm {
   position: relative;
+  display: flex;
+  align-items: center;
   margin: 0 1rem;
   border-bottom: 2px solid gray;
   transition: all 0.5s linear;
@@ -85,7 +87,7 @@ li {
   list-style: none;
 }
 .ProfileIcon ul {
-  display: none;
+  display: flex;
   transition: all 0.2s linear;
   flex-direction: column;
   position: absolute;
@@ -119,11 +121,14 @@ li {
 .ProfileIcon ul li:hover {
   background-color: #00000070;
 }
-.ProfileIcon:hover ul {
+/* .ProfileIcon:hover ul {
   display: flex;
-}
+} */
 @media (max-width: 750px) {
   .searchForm {
     display: none;
+  }
+  .ProfileIcon ul {
+    width: 200px;
   }
 }
