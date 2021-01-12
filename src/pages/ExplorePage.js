@@ -5,21 +5,20 @@ import SearchCard from "../components/SearchCard";
 import ExploreMobilePage from "./ExploreMobilePage";
 import MusicController from "../components/MusicController";
 import { useSelector } from "react-redux";
-import { selectSearch } from "../features/app/appSlice";
+import { selectLoading, selectSearch } from "../features/app/appSlice";
 const ExplorePage = () => {
   const [scr, setscr] = useState(true);
   const SearchResult = useSelector(selectSearch);
+  const Loading = useSelector(selectLoading);
   const div = document.getElementsByClassName("searchResult")[0];
   useEffect(() => {
     let scroll = 0;
     div &&
       div.addEventListener("scroll", () => {
         if (scroll > div.scrollTop) {
-          console.log("Scrolling UP");
           setscr(true);
         } else {
           setscr(false);
-          console.log("Scrolling Down");
         }
         scroll = div.scrollTop;
       });
@@ -58,6 +57,16 @@ const ExplorePage = () => {
             }}
           />
           <div className="searchResult">
+            {Loading && (
+              <h1
+                style={{
+                  color: "#fff",
+                  textAlign: "center",
+                }}
+              >
+                Loading ...
+              </h1>
+            )}
             {SearchResult &&
               SearchResult.map((res, ket) => (
                 <SearchCard

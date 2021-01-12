@@ -22,13 +22,12 @@ const Controlle = () => {
   const playing = useSelector(selectSongPlay);
   const SongName = useSelector(selectSongName);
   const SongId = useSelector(selectSongId);
-
   const opts = {
     height: "390",
     width: "640",
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
-      autoplay: 0,
+      autoplay: playing ? 1 : 0,
     },
   };
 
@@ -108,6 +107,7 @@ const Controlle = () => {
             <YouTube
               videoId={SongId}
               opts={opts}
+              onLoad={() => console.log("loadded")}
               onReady={(e) => {
                 {
                   plat === "ytb" && setPl(e.target);
@@ -135,7 +135,9 @@ const Controlle = () => {
                 var p = Go();
                 p.toggle();
               } else {
-                pl.pauseVideo();
+                if (pl) {
+                  pl.pauseVideo();
+                }
               }
               db.collection("users").doc(user.email).update({
                 playing: false,
@@ -158,7 +160,9 @@ const Controlle = () => {
                 var p = Go();
                 p.toggle();
               } else {
-                pl.playVideo();
+                if (pl) {
+                  pl.playVideo();
+                }
               }
               db.collection("users").doc(user.email).update({
                 playing: true,

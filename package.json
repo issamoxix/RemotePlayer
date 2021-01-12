@@ -1,6 +1,6 @@
 {
   "name": "remote-player",
-  "proxy": "http://192.168.1.129:5000/",
+  "proxy": "https://yd9usa0asd.execute-api.eu-west-3.amazonaws.com/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

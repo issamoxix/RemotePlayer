@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { setSearch } from "../features/app/appSlice";
+import { setLoading, setSearch } from "../features/app/appSlice";
 import SearchRoundedIcon from "@material-ui/icons/SearchRounded";
 import ytb from "../assets/youtube.png";
 import sdc from "../assets/soundcloud.png";
@@ -19,7 +19,6 @@ const NavBar = ({ style }) => {
   const [open, setOpen] = useState(false);
   const [filer, setFiler] = useState(false);
   const [mx, setMx] = useState(20);
-
   const dispatch = useDispatch();
 
   const [input, setInupt] = useState();
@@ -28,13 +27,17 @@ const NavBar = ({ style }) => {
     dispatch(logOut());
   };
   const Search = (query, plat, mx) => {
-    axios.get(`/api/${plat}/${query}/${mx ? mx : 20}`).then((doc) => {
-      dispatch(
-        setSearch({
-          Search: doc.data.collection,
-        })
-      );
-    });
+    dispatch(setLoading());
+    axios
+      .get(`/api?type=${plat}&query=${query}&mx=${mx ? mx : 20}`)
+      .then((doc) => {
+        dispatch(
+          setSearch({
+            Search: doc.data.collection,
+          })
+        );
+        dispatch(setLoading());
+      });
   };
   return (
     <div className="NavBar" style={style}>
@@ -89,7 +92,6 @@ const NavBar = ({ style }) => {
               value={mx}
               onChange={(e) => setMx(e.target.value)}
               className="FilterInput"
-              placeholder="20"
             />
           </div>
         )}

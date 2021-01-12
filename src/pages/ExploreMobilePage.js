@@ -9,6 +9,7 @@ import {
   setSearch,
   selectQuery,
   setQuery,
+  selectLoading,
 } from "../features/app/appSlice";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
@@ -36,18 +37,20 @@ const ExploreMobilePage = () => {
       })
     );
 
-    axios.get(`/api/${plat}/${query}/${mx ? mx : 20}`).then((doc) => {
-      dispatch(
-        setSearch({
-          Search: doc.data.collection,
-        })
-      );
-      dispatch(
-        setQuery({
-          query: null,
-        })
-      );
-    });
+    axios
+      .get(`/api?type=${plat}&query=${query}&mx=${mx ? mx : 20}`)
+      .then((doc) => {
+        dispatch(
+          setSearch({
+            Search: doc.data.collection,
+          })
+        );
+        dispatch(
+          setQuery({
+            query: null,
+          })
+        );
+      });
   };
   useEffect(() => {
     if (Query) {
