@@ -125,9 +125,6 @@ li {
   display: flex;
 } */
 @media (max-width: 750px) {
-  .searchForm {
-    display: none;
-  }
   .ProfileIcon ul {
     width: 200px;
   }

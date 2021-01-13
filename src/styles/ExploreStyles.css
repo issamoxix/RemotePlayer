@@ -114,6 +114,17 @@
   position: absolute;
   backdrop-filter: blur(8px);
 }
+#demo-customized-select-native {
+  background: white;
+  width: 1.6rem;
+  display: flex;
+  justify-content: center;
+  padding-left: 10px;
+}
+.Filtercontainer h3 {
+  font-weight: lighter;
+  margin-right: 10px;
+}
 .SongArtPic {
   background-repeat: no-repeat;
   background-size: contain;
@@ -168,6 +179,38 @@
 .Bar {
   background: red;
   height: 100%;
+}
+/* Loading Form */
+.LoadingWrapper {
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 100%;
+  position: absolute;
+  z-index: 3;
+  /* background-color: ; */
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.LoadingContainer {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  background-color: #00000049;
+  width: 400px;
+
+  height: 50%;
+  border-radius: 17px;
+  border: 2px solid gray;
+}
+.LoadingContainer h2 {
+  font-weight: lighter;
+  color: lightgray;
 }
 @media (max-width: 600px) {
   .MusicControllerContainer {

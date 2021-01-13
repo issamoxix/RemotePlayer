@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import PauseIcon from "@material-ui/icons/Pause";
 import VolumeUpIcon from "@material-ui/icons/VolumeUp";
@@ -15,7 +15,8 @@ import {
 import db from "../db/firebase";
 import { selectUser } from "../features/user/userSlice";
 const Controlle = () => {
-  const [pl, setPl] = useState();
+  const [pl, setPl] = useState(false);
+  const ytbRef = useRef();
   const plat = useSelector(selectPlat);
   const Vol = useSelector(selectVol);
   const user = useSelector(selectUser);
@@ -64,20 +65,18 @@ const Controlle = () => {
     } else if (plat === "ytb") {
       if (pl) {
         if (playing) {
-          pl.playVideo();
+          ytbRef.current.internalPlayer.playVideo();
         } else {
-          pl.pauseVideo();
+          ytbRef.current.internalPlayer.pauseVideo();
         }
       }
     }
     if (Vol && plat === "ytb") {
       if (pl) {
-        pl.setVolume(Vol);
+        ytbRef.current.internalPlayer.setVolume(Vol);
       }
-    } else {
-      setPl(null);
     }
-  }, [playing, Vol, plat]);
+  }, [playing, Vol, plat, pl]);
   return (
     <div className="ControlContainer">
       <div className="SongTitle">
@@ -107,11 +106,10 @@ const Controlle = () => {
             <YouTube
               videoId={SongId}
               opts={opts}
-              onLoad={() => console.log("loadded")}
-              onReady={(e) => {
-                {
-                  plat === "ytb" && setPl(e.target);
-                }
+              ref={ytbRef}
+              onReady={() => {
+                console.log("ready");
+                setPl(true);
               }}
             />
           )
@@ -136,7 +134,7 @@ const Controlle = () => {
                 p.toggle();
               } else {
                 if (pl) {
-                  pl.pauseVideo();
+                  ytbRef.current.internalPlayer.pauseVideo();
                 }
               }
               db.collection("users").doc(user.email).update({
@@ -161,7 +159,7 @@ const Controlle = () => {
                 p.toggle();
               } else {
                 if (pl) {
-                  pl.playVideo();
+                  ytbRef.current.internalPlayer.playVideo();
                 }
               }
               db.collection("users").doc(user.email).update({
@@ -185,6 +183,17 @@ const Controlle = () => {
         max="100"
         value={Vol}
       />
+      {/* Debugging */}
+      {/* <button
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+        }}
+        onClick={() => console.log(pl, plat, ytbRef.current.internalPlayer)}
+      >
+        CLick Test
+      </button> */}
     </div>
   );
 };

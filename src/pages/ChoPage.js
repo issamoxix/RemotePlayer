@@ -19,6 +19,7 @@ const ChoPage = () => {
       >
         <NavBar
           style={{ background: "transparent", position: "fixed", top: 0 }}
+          SearchBar={false}
         />
         <h1
           style={{

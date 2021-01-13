@@ -6,8 +6,10 @@ import ExploreMobilePage from "./ExploreMobilePage";
 import MusicController from "../components/MusicController";
 import { useSelector } from "react-redux";
 import { selectLoading, selectSearch } from "../features/app/appSlice";
+import { CircularProgress } from "@material-ui/core";
 const ExplorePage = () => {
   const [scr, setscr] = useState(true);
+  const [mob, setMob] = useState(false);
   const SearchResult = useSelector(selectSearch);
   const Loading = useSelector(selectLoading);
   const div = document.getElementsByClassName("searchResult")[0];
@@ -23,7 +25,16 @@ const ExplorePage = () => {
         scroll = div.scrollTop;
       });
   }, [div]);
-  if (window.innerWidth <= 600) return <ExploreMobilePage />;
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      if (window.innerWidth <= 600) {
+        setMob(true);
+      } else {
+        setMob(false);
+      }
+    });
+  }, []);
+  if (window.innerWidth <= 600 || mob) return <ExploreMobilePage />;
   return (
     <div className="HeroContainer">
       <div
@@ -55,17 +66,16 @@ const ExplorePage = () => {
               transform: scr ? "translateY(0%)" : "translateY(-100%)",
               borderRadius: "0px",
             }}
+            SearchBar={true}
           />
           <div className="searchResult">
             {Loading && (
-              <h1
-                style={{
-                  color: "#fff",
-                  textAlign: "center",
-                }}
-              >
-                Loading ...
-              </h1>
+              <div className="LoadingWrapper">
+                <div className="LoadingContainer">
+                  <CircularProgress />
+                  <h2>Loading ...</h2>
+                </div>
+              </div>
             )}
             {SearchResult &&
               SearchResult.map((res, ket) => (

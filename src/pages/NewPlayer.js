@@ -7,7 +7,7 @@ const NewPlayer = () => {
   let history = useHistory();
   return (
     <div className="Main">
-      <NavBar style={{ background: "transparent" }} />
+      <NavBar style={{ background: "transparent" }} SearchBar={false} />
       <div className="Main__Container">
         <div className="Main__body">
           <h1>How to use ??</h1>

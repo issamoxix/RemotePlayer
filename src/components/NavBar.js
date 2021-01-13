@@ -7,13 +7,13 @@ import SearchRoundedIcon from "@material-ui/icons/SearchRounded";
 import ytb from "../assets/youtube.png";
 import sdc from "../assets/soundcloud.png";
 import "../styles/Navbar.css";
-import { Avatar } from "@material-ui/core";
+import { Avatar, MenuItem, NativeSelect, Select } from "@material-ui/core";
 import { logOut, selectUser } from "../features/user/userSlice";
 import db, { auth } from "../db/firebase";
 import { selectPlat } from "../features/player/playerSlice";
 import FilterListIcon from "@material-ui/icons/FilterList";
 
-const NavBar = ({ style }) => {
+const NavBar = ({ style, SearchBar }) => {
   const Plat = useSelector(selectPlat);
   const user = useSelector(selectUser);
   const [open, setOpen] = useState(false);
@@ -54,48 +54,55 @@ const NavBar = ({ style }) => {
           </h2>
         </div>
       </Link>
-      <div className="title">
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            Search(input, Plat, mx);
-          }}
-          className="searchForm"
-        >
-          <input
-            type="text"
-            value={input}
-            onChange={(e) => setInupt(e.target.value)}
-            className="searchInput"
-            placeholder={`Search in ${
-              Plat === "sdc" ? "Soundcloud" : "Youtube"
-            }`}
-          />
-          <SearchRoundedIcon
-            style={{
-              position: "absolute",
-              top: "50%",
-              left: 0,
-              transform: "translateY(-50%)",
+      {SearchBar && (
+        <div className="title">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              Search(input, Plat, mx);
             }}
-          />
-          <FilterListIcon
-            onClick={() => setFiler(!filer)}
-            style={{ color: "#fff", cursor: "pointer" }}
-          />
-        </form>
-        {filer && (
-          <div className="Filtercontainer">
-            <h3>Search Result</h3>
+            className="searchForm"
+          >
             <input
               type="text"
-              value={mx}
-              onChange={(e) => setMx(e.target.value)}
-              className="FilterInput"
+              value={input}
+              onChange={(e) => setInupt(e.target.value)}
+              className="searchInput"
+              placeholder={`Search in ${
+                Plat === "sdc" ? "Soundcloud" : "Youtube"
+              }`}
             />
-          </div>
-        )}
-      </div>
+            <SearchRoundedIcon
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: 0,
+                transform: "translateY(-50%)",
+              }}
+            />
+            <FilterListIcon
+              onClick={() => setFiler(!filer)}
+              style={{ color: "#fff", cursor: "pointer" }}
+            />
+          </form>
+          {filer && (
+            <div className="Filtercontainer">
+              <h3>Resulte</h3>
+              <NativeSelect
+                value={mx}
+                id="demo-customized-select-native"
+                onChange={(e) => setMx(e.target.value)}
+              >
+                <option value={20}>20</option>
+                <option value={25}>25</option>
+                <option value={30}>30</option>
+                <option value={35}>35</option>
+                <option value={40}>40</option>
+              </NativeSelect>
+            </div>
+          )}
+        </div>
+      )}
       <div className="UserTab">
         <img
           style={{ height: "32px" }}
