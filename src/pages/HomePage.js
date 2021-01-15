@@ -8,8 +8,14 @@ import { setPlat } from "../features/player/playerSlice";
 const HomePage = () => {
   const dispatch = useDispatch();
   return (
-    <div className="HeroContainer">
-      <div className="MainContainer">
+    <div
+      className="HeroContainer"
+      style={{ backgroundImage: `url('/images/pic3.jpg')` }}
+    >
+      <div
+        className="MainContainer"
+        style={{ backgroundImage: `url('/images/pic3.jpg')` }}
+      >
         <div className="Wrapper">
           <div className="BodyContainer">
             <h1>
@@ -18,8 +24,6 @@ const HomePage = () => {
             <p>
               Nostrud culpa nisi veniam enim exercitation consectetur ad minim
               eiusmod ex eu commodo. Dolor mollit nostrud laborum commodo nulla
-              amet est deserunt eiusmod laboris excepteur nulla incididunt
-              excepteur. Sint irure aliqua aute culpa enim ex esse labore.
             </p>
             <div className="buttonContainer">
               <Link to="/login">
