@@ -1,12 +1,16 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import db from "../db/firebase";
-import { selectPlat, selectVol } from "../features/player/playerSlice";
+import {
+  selectPlat,
+  selectSplat,
+  selectVol,
+} from "../features/player/playerSlice";
 
 import { selectUser } from "../features/user/userSlice";
 import PlayArrowRoundedIcon from "@material-ui/icons/PlayArrowRounded";
 const SearchCard = ({ img, title, Sid }) => {
-  const plat = useSelector(selectPlat);
+  const plat = useSelector(selectSplat);
   const user = useSelector(selectUser);
   const get_vol = useSelector(selectVol);
   const handleCardClick = () => {

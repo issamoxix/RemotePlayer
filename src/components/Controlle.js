@@ -16,6 +16,7 @@ import db from "../db/firebase";
 import { selectUser } from "../features/user/userSlice";
 const Controlle = () => {
   const [pl, setPl] = useState(false);
+
   const ytbRef = useRef();
   const plat = useSelector(selectPlat);
   const Vol = useSelector(selectVol);
@@ -28,7 +29,7 @@ const Controlle = () => {
     width: "640",
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
-      autoplay: playing ? 1 : 0,
+      autoplay: 0,
     },
   };
 

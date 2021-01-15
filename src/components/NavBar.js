@@ -10,11 +10,15 @@ import "../styles/Navbar.css";
 import { Avatar, MenuItem, NativeSelect, Select } from "@material-ui/core";
 import { logOut, selectUser } from "../features/user/userSlice";
 import db, { auth } from "../db/firebase";
-import { selectPlat } from "../features/player/playerSlice";
+import {
+  selectPlat,
+  selectSplat,
+  setSpl,
+} from "../features/player/playerSlice";
 import FilterListIcon from "@material-ui/icons/FilterList";
 
 const NavBar = ({ style, SearchBar }) => {
-  const Plat = useSelector(selectPlat);
+  const Plat = useSelector(selectSplat);
   const user = useSelector(selectUser);
   const [open, setOpen] = useState(false);
   const [filer, setFiler] = useState(false);
@@ -104,19 +108,21 @@ const NavBar = ({ style, SearchBar }) => {
         </div>
       )}
       <div className="UserTab">
-        <img
-          style={{ height: "32px" }}
-          className="TogglePlayMobileNavBar"
-          src={Plat !== "sdc" ? sdc : ytb}
-          alt="plat"
-          onClick={() => {
-            db.collection("users")
-              .doc(user.email)
-              .update({
-                type: Plat === "sdc" ? "ytb" : "sdc",
-              });
-          }}
-        />
+        {SearchBar && (
+          <img
+            style={{ height: "32px" }}
+            className="TogglePlayMobileNavBar"
+            src={Plat !== "sdc" ? sdc : ytb}
+            alt="plat"
+            onClick={() => {
+              dispatch(
+                setSpl({
+                  Sp: Plat === "sdc" ? "ytb" : "sdc",
+                })
+              );
+            }}
+          />
+        )}
         <li className="ProfileIcon">
           <Avatar
             className="AvatarIcon"

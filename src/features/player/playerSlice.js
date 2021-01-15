@@ -9,7 +9,7 @@ export const playerSlice = createSlice({
     artW: null,
     vol: 100,
     plat: null,
-    Splat: "sdc",
+    Splat: "ytb",
     pl: false,
   },
   reducers: {
