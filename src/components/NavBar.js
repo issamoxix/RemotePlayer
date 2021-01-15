@@ -40,6 +40,7 @@ const NavBar = ({ style, SearchBar }) => {
             Search: doc.data.collection,
           })
         );
+        console.log(doc.data.collection);
         dispatch(setLoading());
       });
   };

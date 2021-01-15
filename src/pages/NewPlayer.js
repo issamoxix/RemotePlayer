@@ -6,7 +6,10 @@ import { useHistory } from "react-router-dom";
 const NewPlayer = () => {
   let history = useHistory();
   return (
-    <div className="Main">
+    <div
+      className="Main"
+      style={{ backgroundImage: `url('/images/pic3.jpg')` }}
+    >
       <NavBar style={{ background: "transparent" }} SearchBar={false} />
       <div className="Main__Container">
         <div className="Main__body">

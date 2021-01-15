@@ -36,7 +36,10 @@ const ExplorePage = () => {
   }, []);
   if (window.innerWidth <= 600 || mob) return <ExploreMobilePage />;
   return (
-    <div className="HeroContainer">
+    <div
+      className="HeroContainer"
+      style={{ backgroundImage: `url('/images/pic3.jpg')` }}
+    >
       <div
         className="MainContainer"
         style={{
