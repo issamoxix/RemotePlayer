@@ -7,7 +7,7 @@ import PlayerPage from "./pages/PlayerPage";
 import ExplorePage from "./pages/ExplorePage";
 import { selectUser, setUser } from "./features/user/userSlice";
 import db, { auth } from "./db/firebase";
-
+import Playlist from "./pages/Playlist";
 import { addSong, selectPlat } from "./features/player/playerSlice";
 import NewPlayer from "./pages/NewPlayer";
 
@@ -84,6 +84,7 @@ function App() {
             <Route path="/player" exact component={NewPlayer} />
             <Route path="/remote" exact component={ExplorePage} />
             <Route path="/login" exact component={NewPlayer} />
+            <Route path="/playlist" exact component={Playlist} />
             <Route path="/" exact component={NewPlayer} />
           </>
         )}
