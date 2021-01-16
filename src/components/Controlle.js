@@ -108,9 +108,14 @@ const Controlle = () => {
               videoId={SongId}
               opts={opts}
               ref={ytbRef}
+              onPause={() => {
+                playing && ytbRef.current.internalPlayer.playVideo();
+              }}
+              onStateChange={() => console.log("Stage Changed")}
               onReady={() => {
-                console.log("ready");
+                console.log("Song is Ready !!");
                 setPl(true);
+                playing && ytbRef.current.internalPlayer.playVideo();
               }}
             />
           )

@@ -1,21 +1,18 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
+
 import { Link } from "react-router-dom";
 import { setLoading, setSearch } from "../features/app/appSlice";
 import SearchRoundedIcon from "@material-ui/icons/SearchRounded";
 import ytb from "../assets/youtube.png";
 import sdc from "../assets/soundcloud.png";
 import "../styles/Navbar.css";
-import { Avatar, MenuItem, NativeSelect, Select } from "@material-ui/core";
+import { Avatar, NativeSelect } from "@material-ui/core";
 import { logOut, selectUser } from "../features/user/userSlice";
-import db, { auth } from "../db/firebase";
-import {
-  selectPlat,
-  selectSplat,
-  setSpl,
-} from "../features/player/playerSlice";
+import { auth } from "../db/firebase";
+import { selectSplat, setSpl } from "../features/player/playerSlice";
 import FilterListIcon from "@material-ui/icons/FilterList";
+import API from "@aws-amplify/api";
 
 const NavBar = ({ style, SearchBar }) => {
   const Plat = useSelector(selectSplat);
@@ -32,17 +29,20 @@ const NavBar = ({ style, SearchBar }) => {
   };
   const Search = (query, plat, mx) => {
     dispatch(setLoading());
-    axios
-      .get(`/api?type=${plat}&query=${query}&mx=${mx ? mx : 20}`)
-      .then((doc) => {
-        dispatch(
-          setSearch({
-            Search: doc.data.collection,
-          })
-        );
-        console.log(doc.data.collection);
-        dispatch(setLoading());
-      });
+    API.get("api", "/api", {
+      queryStringParameters: {
+        type: plat,
+        mx: mx ? mx : 20,
+        query: query,
+      },
+    }).then((doc) => {
+      dispatch(
+        setSearch({
+          Search: doc.collection,
+        })
+      );
+      dispatch(setLoading());
+    });
   };
   return (
     <div className="NavBar" style={style}>

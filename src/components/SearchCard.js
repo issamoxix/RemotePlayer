@@ -1,11 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import db from "../db/firebase";
-import {
-  selectPlat,
-  selectSplat,
-  selectVol,
-} from "../features/player/playerSlice";
+import { selectSplat, selectVol } from "../features/player/playerSlice";
 
 import { selectUser } from "../features/user/userSlice";
 import PlayArrowRoundedIcon from "@material-ui/icons/PlayArrowRounded";

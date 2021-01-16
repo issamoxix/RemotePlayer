@@ -18,8 +18,14 @@ const LoginPage = () => {
     }
   }, [history, Plat]);
   return (
-    <div className="HeroContainer">
-      <div className="MainContainer">
+    <div
+      className="HeroContainer"
+      style={{ backgroundImage: `url('/images/pic3.jpg')` }}
+    >
+      <div
+        className="MainContainer"
+        style={{ backgroundImage: `url('/images/pic3.jpg')` }}
+      >
         <div className="LoginWrapper">
           <div className="LoginSocials">
             <h1 className="Join">Sign in</h1>

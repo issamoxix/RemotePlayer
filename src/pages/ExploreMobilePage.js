@@ -9,48 +9,48 @@ import {
   setSearch,
   selectQuery,
   setQuery,
-  selectLoading,
 } from "../features/app/appSlice";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import MusicController from "../components/MusicController";
-import { selectPlat } from "../features/player/playerSlice";
-import db from "../db/firebase";
-import { selectUser } from "../features/user/userSlice";
+import { setSpl, selectSplat } from "../features/player/playerSlice";
+
 import FilterListIcon from "@material-ui/icons/FilterList";
+import API from "@aws-amplify/api";
 
 const ExploreMobilePage = () => {
   const [input, setInupt] = useState();
   const [mx, setMx] = useState(20);
   const [open, setOpen] = useState(false);
   const [Qw, setQ] = useState();
-  const plat = useSelector(selectPlat);
+  const plat = useSelector(selectSplat);
   const Query = useSelector(selectQuery);
   const dispatch = useDispatch();
   const SearchResult = useSelector(selectSearch);
-  const user = useSelector(selectUser);
   const Search = (query, plat, mx) => {
     dispatch(
       setQuery({
         query: query,
       })
     );
-
-    axios
-      .get(`/api?type=${plat}&query=${query}&mx=${mx ? mx : 20}`)
-      .then((doc) => {
-        dispatch(
-          setSearch({
-            Search: doc.data.collection,
-          })
-        );
-        dispatch(
-          setQuery({
-            query: null,
-          })
-        );
-      });
+    API.get("api", "/api", {
+      queryStringParameters: {
+        type: plat,
+        mx: mx ? mx : 20,
+        query: query,
+      },
+    }).then((doc) => {
+      dispatch(
+        setSearch({
+          Search: doc.collection,
+        })
+      );
+      dispatch(
+        setQuery({
+          query: null,
+        })
+      );
+    });
   };
   useEffect(() => {
     if (Query) {
@@ -58,7 +58,10 @@ const ExploreMobilePage = () => {
     }
   }, [Query]);
   return (
-    <div className="MobileExploreContainer">
+    <div
+      className="MobileExploreContainer"
+      style={{ backgroundImage: `url('/images/pic3.jpg')` }}
+    >
       <div className="Header">
         <Link to="/">
           <h2>
@@ -76,12 +79,11 @@ const ExploreMobilePage = () => {
           src={plat !== "sdc" ? sdc : ytb}
           alt="plat"
           onClick={() =>
-            db
-              .collection("users")
-              .doc(user.email)
-              .update({
-                type: plat === "sdc" ? "ytb" : "sdc",
+            dispatch(
+              setSpl({
+                Sp: plat === "sdc" ? "ytb" : "sdc",
               })
+            )
           }
         />
         <form

@@ -10,6 +10,8 @@ import db, { auth } from "./db/firebase";
 import Playlist from "./pages/Playlist";
 import { addSong, selectPlat } from "./features/player/playerSlice";
 import NewPlayer from "./pages/NewPlayer";
+import API from "@aws-amplify/api";
+import awsmobile from "./aws-exports";
 
 function App() {
   const [check, setCheck] = useState(false);
@@ -17,6 +19,7 @@ function App() {
   const plat = useSelector(selectPlat);
   const dispatch = useDispatch();
   useEffect(() => {
+    API.configure(awsmobile);
     if (check) {
       db.collection("users")
         .doc(user.email)
