@@ -24,6 +24,7 @@ const Controlle = () => {
   const playing = useSelector(selectSongPlay);
   const SongName = useSelector(selectSongName);
   const SongId = useSelector(selectSongId);
+  // add youtube Vol reset => in the pause stop events
   const opts = {
     height: "390",
     width: "640",
@@ -66,8 +67,10 @@ const Controlle = () => {
     } else if (plat === "ytb") {
       if (pl) {
         if (playing) {
+          ytbRef.current.internalPlayer.setVolume(Vol);
           ytbRef.current.internalPlayer.playVideo();
         } else {
+          ytbRef.current.internalPlayer.setVolume(Vol);
           ytbRef.current.internalPlayer.pauseVideo();
         }
       }

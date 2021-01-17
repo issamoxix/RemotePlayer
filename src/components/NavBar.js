@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { setLoading, setSearch } from "../features/app/appSlice";
 import SearchRoundedIcon from "@material-ui/icons/SearchRounded";
 import ytb from "../assets/youtube.png";
@@ -109,6 +109,16 @@ const NavBar = ({ style, SearchBar }) => {
         </div>
       )}
       <div className="UserTab">
+        <li>
+          <NavLink to="/remote" activeClassName="selected">
+            Remote
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/display" activeClassName="selected">
+            Display
+          </NavLink>
+        </li>
         {SearchBar && (
           <img
             style={{ height: "32px" }}
@@ -132,13 +142,6 @@ const NavBar = ({ style, SearchBar }) => {
           />
           {open && (
             <ul>
-              <Link to="/display">
-                <li>Display</li>
-              </Link>
-              <Link to="/remote">
-                {" "}
-                <li>Remote</li>
-              </Link>
               <li onClick={() => log_out()}>Log Out</li>
             </ul>
           )}

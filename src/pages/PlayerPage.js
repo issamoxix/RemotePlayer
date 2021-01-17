@@ -6,13 +6,20 @@ import NavBar from "../components/NavBar";
 import "../styles/PlayerStyles.css";
 import ArrowBackIosRoundedIcon from "@material-ui/icons/ArrowBackIosRounded";
 import { Link } from "react-router-dom";
+import { selectArt } from "../features/player/playerSlice";
+import { useSelector } from "react-redux";
 const PlayerPage = () => {
+  const artw = useSelector(selectArt);
   return (
-    <div className="HeroContainer" style={{ background: "#E54F6D" }}>
+    <div
+      className="HeroContainer"
+      style={{ backgroundImage: `url("${artw}")` }}
+    >
       <div
         className="MainContainer"
         style={{
-          background: "#360568",
+          // background: "#360568",
+          background: "rgb(54 5 104 / 79%)",
           display: "flex",
           alignItems: "center",
           position: "relative",

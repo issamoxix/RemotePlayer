@@ -9,6 +9,18 @@
   border-radius: 7px 7px 0 0;
   transition: all 0.4s linear;
 }
+li a {
+  color: gray;
+  transition: all 0.2s linear;
+  margin-right: 10px;
+}
+li a:hover {
+  color: lightgray;
+}
+.selected {
+  color: #fff;
+  border-bottom: 2px solid #ddd;
+}
 .ToggleButton {
   background-color: transparent;
   border: 2px solid #fff;
@@ -38,10 +50,10 @@
 }
 .LogoTitle {
   cursor: pointer;
+  color: #fff;
 }
 a {
   text-decoration: none;
-  color: #fff;
 }
 
 .title {
