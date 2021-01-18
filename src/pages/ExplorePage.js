@@ -87,6 +87,7 @@ const ExplorePage = () => {
                   img={res.artwork_url}
                   title={res.title}
                   Sid={res.id}
+                  Cplat={res.type ? "ytb" : "sdc"}
                 />
               ))}
           </div>

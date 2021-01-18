@@ -4,17 +4,23 @@ import Mkd from "../assets/pic2.jpg";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setPlat } from "../features/player/playerSlice";
+import Footer from "../components/Footer";
 
 const HomePage = () => {
   const dispatch = useDispatch();
   return (
     <div
       className="HeroContainer"
-      style={{ backgroundImage: `url('/images/pic3.jpg')` }}
+      style={{ backgroundImage: `url('/images/pic3.jpg')`, display: "block" }}
     >
       <div
         className="MainContainer"
-        style={{ backgroundImage: `url('/images/pic3.jpg')` }}
+        style={{
+          backgroundImage: `url('/images/pic3.jpg')`,
+          width: "100%",
+          height: "100%",
+          borderRadius: "0px",
+        }}
       >
         <div className="Wrapper">
           <div className="BodyContainer">
@@ -65,6 +71,7 @@ const HomePage = () => {
           />
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

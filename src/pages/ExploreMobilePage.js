@@ -136,6 +136,7 @@ const ExploreMobilePage = () => {
               img={res.artwork_url}
               title={res.title}
               Sid={res.id}
+              Cplat={res.type === "ytb" ? "ytb" : "sdc"}
             />
           ))
         ) : Qw ? (

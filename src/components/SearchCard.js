@@ -1,12 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import db from "../db/firebase";
-import { selectSplat, selectVol } from "../features/player/playerSlice";
-
+import { selectVol } from "../features/player/playerSlice";
+import PlaylistAddRoundedIcon from "@material-ui/icons/PlaylistAddRounded";
 import { selectUser } from "../features/user/userSlice";
 import PlayArrowRoundedIcon from "@material-ui/icons/PlayArrowRounded";
-const SearchCard = ({ img, title, Sid }) => {
-  const plat = useSelector(selectSplat);
+const SearchCard = ({ img, title, Sid, Cplat }) => {
   const user = useSelector(selectUser);
   const get_vol = useSelector(selectVol);
   const handleCardClick = () => {
@@ -15,31 +14,44 @@ const SearchCard = ({ img, title, Sid }) => {
       .update({
         playing: true,
         name: title,
-        type: plat,
+        type: Cplat,
         id: Sid,
         vol: get_vol ? get_vol : 50,
         artW: img,
       });
   };
   return (
-    <div className="Card" onClick={() => handleCardClick()}>
+    <div
+      className="Card"
+      onMouseOver={() => console.log("hoverd")}
+      onMouseOut={() => console.log("Out")}
+      onClick={() => handleCardClick()}
+    >
       <div
         className="CardImage"
         style={{
           backgroundImage:
-            plat === "sdc"
+            Cplat === "sdc"
               ? `URL('${img && img.split("-large.jpg")[0]}-t500x500.jpg')`
               : `URL('${img && img}')`,
         }}
       >
+        {/* play button */}
         <div
           className="PlaybuttonIcon"
-          style={{ background: plat === "sdc" ? "#E08E45" : "#93032E" }}
+          style={{ background: Cplat === "sdc" ? "#E08E45" : "#93032E" }}
           onClick={() => {
             handleCardClick();
           }}
         >
           <PlayArrowRoundedIcon />
+        </div>
+        {/* add to playlist button */}
+        <div
+          className="AddToPlaylist"
+          onClick={() => console.log("add to playlist")}
+        >
+          <PlaylistAddRoundedIcon />
         </div>
       </div>
       <div className="CardBody">
@@ -47,7 +59,7 @@ const SearchCard = ({ img, title, Sid }) => {
         <p
           style={{ color: "#035F87", fontWeight: "bold", marginBottom: "1rem" }}
         >
-          {plat === "ytb" ? "Youtube" : "Soundcloud"}{" "}
+          {Cplat === "ytb" ? "Youtube" : "Soundcloud"}{" "}
         </p>
         {/* <button
           className="PlayButton"

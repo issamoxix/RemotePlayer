@@ -24,6 +24,7 @@ code {
   background-color: #f1f1f1;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   transition: backgroud 1s ease-out;

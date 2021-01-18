@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
+import AddPlaylist from "./AddPlaylist";
 
 const PlayListCard = (props) => {
-  return <div className="PlayListCard">{props.children}</div>;
+  const [add, setAdd] = useState(false);
+  return (
+    <>
+      <div className="PlayListCard" onClick={() => setAdd(true)}>
+        {props.children}
+      </div>
+      {props.event === "add" && add && <AddPlaylist set={setAdd} />}
+    </>
+  );
 };
 
 export default PlayListCard;

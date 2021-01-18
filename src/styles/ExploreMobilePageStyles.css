@@ -29,12 +29,13 @@
 }
 .Filtercontainer {
   position: absolute;
-  right: 0;
+  right: 50%;
+  transform: translateX(50%);
   top: 10vh;
   display: flex;
   align-items: center;
   /* justify-content: flex-end; */
-  width: 100%;
+  width: 50%;
   background: #00000070;
   backdrop-filter: blur(5px);
   color: #fff;

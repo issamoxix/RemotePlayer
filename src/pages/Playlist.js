@@ -3,13 +3,17 @@ import NavBar from "../components/NavBar";
 import PlayListCard from "../components/PlayListCard";
 import "../styles/Playlist.css";
 import AddRoundedIcon from "@material-ui/icons/AddRounded";
+
 const Playlist = () => {
   return (
-    <div className="Main">
+    <div
+      className="Main"
+      style={{ backgroundImage: 'url("/images/pic3.jpg")' }}
+    >
       {" "}
       <NavBar style={{ background: "transparent" }} SearchBar={false} />
       <div className="playlistcontainer">
-        <PlayListCard>
+        <PlayListCard event="add">
           <AddRoundedIcon />
         </PlayListCard>
         <PlayListCard />

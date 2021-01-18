@@ -113,6 +113,7 @@
   background: #000000bf;
   position: absolute;
   backdrop-filter: blur(8px);
+  z-index: 7;
 }
 #demo-customized-select-native {
   background: white;
@@ -211,6 +212,25 @@
 .LoadingContainer h2 {
   font-weight: lighter;
   color: lightgray;
+}
+/* add to playlist button */
+.AddToPlaylist {
+  position: absolute;
+  bottom: -5%;
+  left: 5%;
+  background: gray;
+  width: 37px;
+  height: 37px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.4s linear;
+  z-index: 2;
+}
+.AddToPlaylist:hover {
+  background-color: #000;
 }
 @media (max-width: 600px) {
   .MusicControllerContainer {

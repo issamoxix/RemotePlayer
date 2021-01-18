@@ -13,7 +13,11 @@
   border: 2px solid gray;
   border-radius: 17px;
   margin: 0.5rem 1rem;
+  transition: all 0.2s linear;
   cursor: pointer;
+}
+.PlayListCard:active {
+  transform: scale(0.7);
 }
 .PlayListCard:first-child {
   display: flex;
@@ -24,4 +28,78 @@
 .PlayListCard:first-child .MuiSvgIcon-root {
   color: gray;
   font-size: 4rem;
+}
+/* add Playlist Form */
+.AddPlaylist {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 400px;
+  height: 400px;
+  z-index: 2;
+  background-color: rgba(211, 211, 211, 0.719);
+  transform: translate(-50%, -50%);
+  border-radius: 17px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.AddForm {
+  display: flex;
+  justify-content: space-between;
+}
+.AddForm input {
+  width: 100%;
+  border: none;
+  font-size: 20px;
+  padding: 5px 10px;
+  border-radius: 17px;
+  font-weight: lighter;
+}
+.AddForm button {
+  width: 100%;
+  border: none;
+  color: gray;
+  background-color: #fff;
+  border-radius: 17px;
+  font-size: 20px;
+  font-weight: lighter;
+  padding: 10px;
+  transition: all 0.4s linear;
+  cursor: pointer;
+}
+.AddHeader {
+  position: relative;
+}
+.AddForm button:hover {
+  color: #000;
+}
+.CloseX {
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: #ddd;
+  cursor: pointer;
+  font-weight: lighter;
+  transition: all 1s ease;
+}
+.CloseX:hover {
+  color: #d56161d1;
+}
+.AddForm button:active {
+  transform: scale(0.8);
+}
+
+.AddPlaylistWrapper {
+  top: 0;
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  backdrop-filter: blur(5px);
+}
+@media (max-width: 600px) {
+  .AddPlaylist {
+    width: 300px;
+  }
 }
