@@ -4,6 +4,7 @@
 } */
 .BodyContainer h1 {
   color: #fff;
+  font-size: 3rem;
 }
 .BodyContainer {
   margin: 0 2rem;
@@ -11,6 +12,29 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+.StartBtn {
+  background: linear-gradient(45deg, #93032e8f, #ce86458c);
+  color: #fff;
+  border: 2px solid #93866f;
+  border-radius: 17px;
+  min-width: 40%;
+  padding: 20px;
+  font-size: 1.2rem;
+  font-weight: lighter;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  /* height: 100%;
+  width: 41%; */
+}
+.StartBtn:hover {
+  transform: scale(1.1);
+  background: linear-gradient(45deg, #93032e, #e08e45);
+  border-color: #7a2015;
+}
+.StartBtn:active {
+  transform: scale(1);
+  border-color: #fff;
 }
 .BodyContainer p {
   width: 50%;

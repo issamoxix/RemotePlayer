@@ -11,12 +11,12 @@
   z-index: 5;
 }
 li a {
-  color: gray;
+  color: lightgray;
   transition: all 0.2s linear;
   margin-right: 10px;
 }
 li a:hover {
-  color: lightgray;
+  color: #fff;
 }
 .selected {
   color: #fff;

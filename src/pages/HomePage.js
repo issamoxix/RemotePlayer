@@ -33,34 +33,7 @@ const HomePage = () => {
             </p>
             <div className="buttonContainer">
               <Link to="/login">
-                <button
-                  className="Prbtn"
-                  onClick={() =>
-                    dispatch(
-                      setPlat({
-                        plat: "ytb",
-                      })
-                    )
-                  }
-                  style={{ background: "#93032E" }}
-                >
-                  Youtube
-                </button>
-              </Link>
-              <Link to="/login">
-                <button
-                  className="Prbtn"
-                  onClick={() =>
-                    dispatch(
-                      setPlat({
-                        plat: "sdc",
-                      })
-                    )
-                  }
-                  style={{ background: "#E08E45" }}
-                >
-                  SoundCloud
-                </button>
+                <button className="StartBtn">Sign in</button>
               </Link>
             </div>
           </div>
