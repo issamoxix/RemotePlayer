@@ -1,22 +1,14 @@
-import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import React from "react";
+
 import { auth, provider } from "../firebase";
-import { selectPlat } from "../features/player/playerSlice";
 
 import "../styles/HomeStyles.css";
 import "../styles/LoginStyles.css";
 const LoginPage = () => {
-  const Plat = useSelector(selectPlat);
   const signIn = () => {
     auth.signInWithPopup(provider).catch((error) => alert(error.message));
   };
-  let history = useHistory();
-  useEffect(() => {
-    if (!Plat) {
-      return history.push("/");
-    }
-  }, [history, Plat]);
+
   return (
     <div
       className="HeroContainer"

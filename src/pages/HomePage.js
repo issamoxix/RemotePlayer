@@ -2,12 +2,9 @@ import React from "react";
 import "../styles/HomeStyles.css";
 import Mkd from "../assets/pic2.jpg";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { setPlat } from "../features/player/playerSlice";
 import Footer from "../components/Footer";
 
 const HomePage = () => {
-  const dispatch = useDispatch();
   return (
     <div
       className="HeroContainer"
