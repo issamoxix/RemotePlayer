@@ -99,7 +99,9 @@ const ExploreMobilePage = () => {
             value={input}
             onChange={(e) => setInupt(e.target.value)}
             className="SearchInput"
-            placeholder="Search"
+            placeholder={`Search in ${
+              plat === "sdc" ? "Soundcloud" : "Youtube"
+            }`}
           />
           <SearchRoundedIcon
             style={{

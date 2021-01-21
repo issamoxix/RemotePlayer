@@ -21,12 +21,7 @@ const SearchCard = ({ img, title, Sid, Cplat }) => {
       });
   };
   return (
-    <div
-      className="Card"
-      onMouseOver={() => console.log("hoverd")}
-      onMouseOut={() => console.log("Out")}
-      onClick={() => handleCardClick()}
-    >
+    <div className="Card" onClick={() => handleCardClick()}>
       <div
         className="CardImage"
         style={{
@@ -47,15 +42,15 @@ const SearchCard = ({ img, title, Sid, Cplat }) => {
           <PlayArrowRoundedIcon />
         </div>
         {/* add to playlist button */}
-        <div
+        {/* <div
           className="AddToPlaylist"
           onClick={() => console.log("add to playlist")}
         >
           <PlaylistAddRoundedIcon />
-        </div>
+        </div> */}
       </div>
       <div className="CardBody">
-        <h4>{title.substring(0, 17)} </h4>
+        <h4>{title && title.substring(0, 17)} </h4>
         <p
           style={{ color: "#035F87", fontWeight: "bold", marginBottom: "1rem" }}
         >

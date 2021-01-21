@@ -8,6 +8,7 @@
   background-color: #000;
   border-radius: 7px 7px 0 0;
   transition: all 0.4s linear;
+  z-index: 5;
 }
 li a {
   color: gray;
@@ -91,6 +92,7 @@ a {
   display: flex;
   align-items: center;
 }
+
 .AvatarIcon {
   margin: 0 1rem;
   cursor: pointer;
@@ -139,5 +141,8 @@ li {
 @media (max-width: 750px) {
   .ProfileIcon ul {
     width: 200px;
+  }
+  .UserTab li:not(.dhin) {
+    display: none;
   }
 }

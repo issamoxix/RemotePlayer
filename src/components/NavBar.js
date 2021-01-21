@@ -134,7 +134,7 @@ const NavBar = ({ style, SearchBar }) => {
             }}
           />
         )}
-        <li className="ProfileIcon">
+        <li className="ProfileIcon dhin">
           <Avatar
             className="AvatarIcon"
             onClick={() => setOpen(!open)}
@@ -142,7 +142,9 @@ const NavBar = ({ style, SearchBar }) => {
           />
           {open && (
             <ul>
-              <li onClick={() => log_out()}>Log Out</li>
+              <li className="dhin" onClick={() => log_out()}>
+                Log Out
+              </li>
             </ul>
           )}
         </li>
