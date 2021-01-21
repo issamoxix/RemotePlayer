@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import db from "../db/firebase";
+import db from "../firebase";
 import { selectVol } from "../features/player/playerSlice";
 import PlaylistAddRoundedIcon from "@material-ui/icons/PlaylistAddRounded";
 import { selectUser } from "../features/user/userSlice";

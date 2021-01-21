@@ -12,7 +12,7 @@ import {
   selectSongName,
   selectPlat,
 } from "../features/player/playerSlice";
-import db from "../db/firebase";
+import db from "../firebase";
 import { selectUser } from "../features/user/userSlice";
 const Controlle = () => {
   const [pl, setPl] = useState(false);

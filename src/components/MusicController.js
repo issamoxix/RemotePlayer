@@ -10,7 +10,7 @@ import {
   selectSongPlay,
   selectVol,
 } from "../features/player/playerSlice";
-import db from "../db/firebase";
+import db from "../firebase";
 import { selectUser } from "../features/user/userSlice";
 import VolumeDownRoundedIcon from "@material-ui/icons/VolumeDownRounded";
 

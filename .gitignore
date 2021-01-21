@@ -42,3 +42,4 @@ amplify-gradle-config.json
 amplifytools.xcconfig
 .secret-*
 src/db/firebase.js
+firebase.js

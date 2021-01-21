@@ -9,7 +9,7 @@ import sdc from "../assets/soundcloud.png";
 import "../styles/Navbar.css";
 import { Avatar, NativeSelect } from "@material-ui/core";
 import { logOut, selectUser } from "../features/user/userSlice";
-import { auth } from "../db/firebase";
+import { auth } from "../firebase";
 import { selectSplat, setSpl } from "../features/player/playerSlice";
 import FilterListIcon from "@material-ui/icons/FilterList";
 import API from "@aws-amplify/api";

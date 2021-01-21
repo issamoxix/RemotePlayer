@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { auth, provider } from "../db/firebase";
+import { auth, provider } from "../firebase";
 import { selectPlat } from "../features/player/playerSlice";
 
 import "../styles/HomeStyles.css";

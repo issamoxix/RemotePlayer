@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import PlayerPage from "./pages/PlayerPage";
 import ExplorePage from "./pages/ExplorePage";
 import { selectUser, setUser } from "./features/user/userSlice";
-import db, { auth } from "./db/firebase";
+import db, { auth } from "./firebase";
 import Playlist from "./pages/Playlist";
 import { addSong, selectPlat } from "./features/player/playerSlice";
 import NewPlayer from "./pages/NewPlayer";
