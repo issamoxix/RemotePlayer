@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import db from "../firebase";
 import { selectVol } from "../features/player/playerSlice";
@@ -7,6 +7,7 @@ import { selectUser } from "../features/user/userSlice";
 import PlayArrowRoundedIcon from "@material-ui/icons/PlayArrowRounded";
 const SearchCard = ({ img, title, Sid, Cplat }) => {
   const user = useSelector(selectUser);
+  const [hover, setHover] = useState(false);
   const get_vol = useSelector(selectVol);
   const handleCardClick = () => {
     db.collection("users")
@@ -21,7 +22,7 @@ const SearchCard = ({ img, title, Sid, Cplat }) => {
       });
   };
   return (
-    <div className="Card" onClick={() => handleCardClick()}>
+    <div className="Card">
       <div
         className="CardImage"
         style={{
@@ -30,17 +31,30 @@ const SearchCard = ({ img, title, Sid, Cplat }) => {
               ? `URL('${img && img.split("-large.jpg")[0]}-t500x500.jpg')`
               : `URL('${img && img}')`,
         }}
+        onMouseOver={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
       >
+        {/* wrapper */}
+        {hover && (
+          <div className="hoverWrapper">
+            <div
+              className="PlaybuttonIcon"
+              style={{ background: Cplat === "sdc" ? "#E08E45" : "#93032E" }}
+              onClick={() => {
+                handleCardClick();
+              }}
+            >
+              <PlayArrowRoundedIcon />
+            </div>
+            <div
+              className="addbuttonp"
+              onClick={() => alert("add to playlist")}
+            >
+              <PlaylistAddRoundedIcon />
+            </div>
+          </div>
+        )}
         {/* play button */}
-        <div
-          className="PlaybuttonIcon"
-          style={{ background: Cplat === "sdc" ? "#E08E45" : "#93032E" }}
-          onClick={() => {
-            handleCardClick();
-          }}
-        >
-          <PlayArrowRoundedIcon />
-        </div>
         {/* add to playlist button */}
         {/* <div
           className="AddToPlaylist"
