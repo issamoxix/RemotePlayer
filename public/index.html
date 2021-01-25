@@ -37,10 +37,53 @@
     />
     <title>RemotePlayer</title>
     <script src="https://www.youtube.com/iframe_api"></script>
+    <style>
+      #loading {
+        background-color: lightgray;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+          "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+          "Helvetica Neue", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      #loading span {
+        color: rgb(147, 3, 46);
+      }
+      #loading h2 {
+        color: rgb(224, 142, 69);
+      }
+      #loading img {
+        animation: boom 0.4s infinite;
+      }
+      @keyframes boom {
+        from {
+          transform: scale(1);
+        }
+        90% {
+          transform: scale(1.1);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root">
+      <div id="loading">
+        <img src="images/speaker.png" />
+        <h2>Remote<span>Player</span></h2>
+      </div>
       <script
         type="text/javascript"
         charset="utf-8"
