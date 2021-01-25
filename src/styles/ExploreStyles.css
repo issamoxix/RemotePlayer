@@ -34,6 +34,7 @@
   width: 150px;
   height: 150px;
   display: flex;
+  min-width: 30px;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
@@ -259,7 +260,7 @@
   align-items: center;
   justify-content: center;
 }
-@media (max-width: 600px) {
+@media (max-width: 790px) {
   .MusicControllerContainer {
     left: 50%;
     transform: translateX(-50%);
@@ -295,6 +296,7 @@
     margin-bottom: 0px;
   }
   .PlaybuttonIcon {
-    bottom: 5%;
+    width: 80px;
+    height: 80px;
   }
 }
