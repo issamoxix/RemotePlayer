@@ -4,14 +4,22 @@ import "../styles/ExploreStyles.css";
 import SearchCard from "../components/SearchCard";
 import ExploreMobilePage from "./ExploreMobilePage";
 import MusicController from "../components/MusicController";
-import { useSelector } from "react-redux";
-import { selectLoading, selectSearch } from "../features/app/appSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectLoading,
+  selectPlst,
+  selectSearch,
+  toggleCard,
+} from "../features/app/appSlice";
 import { CircularProgress } from "@material-ui/core";
+import PlaylistHCard from "../components/PlaylistHCard";
 const ExplorePage = () => {
   const [scr, setscr] = useState(true);
   const [mob, setMob] = useState(false);
   const SearchResult = useSelector(selectSearch);
   const Loading = useSelector(selectLoading);
+  const hpl = useSelector(selectPlst);
+  const dispatch = useDispatch();
   const div = document.getElementsByClassName("searchResult")[0];
   useEffect(() => {
     let scroll = 0;
@@ -77,6 +85,28 @@ const ExplorePage = () => {
                 <div className="LoadingContainer">
                   <CircularProgress />
                   <h2>Loading ...</h2>
+                </div>
+              </div>
+            )}
+            {/* test */}
+            {hpl && (
+              <div className="LoadingWrapper">
+                <div className="LoadingContainer playlistform">
+                  <div className="HeadTitle">
+                    <h2>Add to playlist</h2>
+                  </div>
+                  <div className="playlistList">
+                    <PlaylistHCard />
+                    <PlaylistHCard />
+                    <PlaylistHCard />
+                  </div>
+                  <div className="settings">
+                    <button>Save</button>
+                    <button>Add playlist</button>
+                    <button onClick={() => dispatch(toggleCard())}>
+                      Cancel
+                    </button>
+                  </div>
                 </div>
               </div>
             )}

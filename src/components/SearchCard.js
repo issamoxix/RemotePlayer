@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import db from "../firebase";
 import { selectVol } from "../features/player/playerSlice";
 import PlaylistAddRoundedIcon from "@material-ui/icons/PlaylistAddRounded";
 import { selectUser } from "../features/user/userSlice";
 import PlayArrowRoundedIcon from "@material-ui/icons/PlayArrowRounded";
+import { toggleCard } from "../features/app/appSlice";
 const SearchCard = ({ img, title, Sid, Cplat }) => {
   const user = useSelector(selectUser);
   const [hover, setHover] = useState(false);
   const get_vol = useSelector(selectVol);
+  const dispatch = useDispatch();
   const handleCardClick = () => {
     db.collection("users")
       .doc(user.email)
@@ -46,10 +48,7 @@ const SearchCard = ({ img, title, Sid, Cplat }) => {
             >
               <PlayArrowRoundedIcon />
             </div>
-            <div
-              className="addbuttonp"
-              onClick={() => alert("add to playlist")}
-            >
+            <div className="addbuttonp" onClick={() => dispatch(toggleCard())}>
               <PlaylistAddRoundedIcon />
             </div>
           </div>

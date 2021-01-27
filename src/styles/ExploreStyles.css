@@ -260,6 +260,65 @@
   align-items: center;
   justify-content: center;
 }
+.playlistform {
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #000000a3;
+}
+.HeadTitle {
+  border-bottom: 1px solid lightgray;
+  margin-bottom: 20px;
+}
+.playlistList {
+  flex: 1;
+  overflow: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.playlistcard {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+.playlistcard label {
+  color: #ddd;
+  font-size: 20px;
+}
+.settings {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.settings button {
+  border-radius: 10px;
+  border-color: transparent;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 10px;
+  background-color: #ddd;
+}
+.checkbox {
+  margin-right: 12px;
+  background-color: #ddd;
+  cursor: pointer;
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.checkbox:checked {
+  background-color: #ddd;
+}
+.checkbox:checked:after {
+  content: "\2718";
+  font-size: 1.6rem;
+}
 @media (max-width: 790px) {
   .MusicControllerContainer {
     left: 50%;
