@@ -25,8 +25,9 @@ const HomePage = () => {
               Remote<span style={{ color: "rgb(147, 3, 46)" }}>Player</span>
             </h1>
             <p>
-              Nostrud culpa nisi veniam enim exercitation consectetur ad minim
-              eiusmod ex eu commodo. Dolor mollit nostrud laborum commodo nulla
+              RemptePlayer is an app where you can play Youtube and Soundcloud
+              Music remotely, and also you can play Youtube songs while mobile
+              screen off
             </p>
             <div className="buttonContainer">
               <Link to="/login">
