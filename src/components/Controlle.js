@@ -14,7 +14,7 @@ import {
 } from "../features/player/playerSlice";
 import db from "../firebase";
 import { selectUser } from "../features/user/userSlice";
-const Controlle = () => {
+const Controlle = ({ hide }) => {
   const [pl, setPl] = useState(false);
 
   const ytbRef = useRef();
@@ -82,7 +82,7 @@ const Controlle = () => {
     }
   }, [playing, Vol, plat, pl]);
   return (
-    <div className="ControlContainer">
+    <div className="ControlContainer" style={{ display: hide && "none" }}>
       <div className="SongTitle">
         <h2>{SongName && SongName.substring(0, 20)} </h2>
         <p style={{ color: "#035F87", fontWeight: "bold" }}>

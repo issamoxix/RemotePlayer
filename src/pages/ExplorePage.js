@@ -13,6 +13,7 @@ import {
 } from "../features/app/appSlice";
 import { CircularProgress } from "@material-ui/core";
 import PlaylistHCard from "../components/PlaylistHCard";
+import Controlle from "../components/Controlle";
 const ExplorePage = () => {
   const [scr, setscr] = useState(true);
   const [mob, setMob] = useState(false);
@@ -122,6 +123,7 @@ const ExplorePage = () => {
               ))}
           </div>
           <MusicController />
+          <Controlle hide={true} />
         </div>
       </div>
     </div>

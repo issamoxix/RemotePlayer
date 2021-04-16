@@ -17,6 +17,7 @@ import { setSpl, selectSplat } from "../features/player/playerSlice";
 
 import FilterListIcon from "@material-ui/icons/FilterList";
 import API from "@aws-amplify/api";
+import Controlle from "../components/Controlle";
 
 const ExploreMobilePage = () => {
   const [input, setInupt] = useState();
@@ -153,6 +154,7 @@ const ExploreMobilePage = () => {
         )}
       </div>
       <MusicController mobile={true} />
+      <Controlle hide={true} />
     </div>
   );
 };
